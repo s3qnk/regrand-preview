@@ -4,6 +4,7 @@ import { initModal } from './modules/modal.js';
 import { initPhoneMask } from './modules/phone-mask.js';
 import { initMetrikaEvents } from './modules/metrika.js';
 import { initLazyMap } from './modules/lazy-map.js';
+import { initLazyVideo } from './modules/lazy-video.js';
 import { initFaq } from './modules/faq.js';
 
 initPhoneMask();
@@ -12,4 +13,5 @@ initQuiz();
 initForms();
 initMetrikaEvents();
 initLazyMap();
+initLazyVideo();
 initFaq();

@@ -168,6 +168,44 @@
 @media (min-width: 1024px) {
 	.video__grid { grid-template-columns: 1.2fr .8fr; }
 }
+.video-facade {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16/9;
+	border-radius: 20px;
+	background: var(--c-ink) center/cover no-repeat;
+	box-shadow: var(--shadow);
+	overflow: hidden;
+	cursor: pointer;
+}
+.video-facade--vertical { max-width: 340px; aspect-ratio: 9/16; }
+.video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-facade__btn {
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: var(--c-red);
+	transition: transform .2s;
+}
+.video-facade__btn::before {
+	content: '';
+	position: absolute;
+	left: 55%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: 12px solid transparent;
+	border-left: 18px solid #fff;
+	border-right: 0;
+}
+.video-facade:hover .video-facade__btn { transform: scale(1.08); }
+.video-facade.is-loaded .video-facade__btn { display: none; }
+.video-facade--tile { border-radius: 14px; }
+.video-facade--tile .video-facade__btn { width: 48px; height: 48px; }
+.video__extra { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 28px; }
+.video-tile__label { font-size: 14px; color: var(--c-gray); margin-top: 8px; }
 
 /* ============ Гарантия ============ */
 .warranty__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 20px; }
