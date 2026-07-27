@@ -204,7 +204,10 @@
 .video-facade.is-loaded .video-facade__btn { display: none; }
 .video-facade--tile { border-radius: 14px; }
 .video-facade--tile .video-facade__btn { width: 48px; height: 48px; }
-.video__extra { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 28px; }
+.video__extra { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 28px; }
+@media (min-width: 1024px) {
+	.video__extra { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
 .video-tile__label { font-size: 14px; color: var(--c-gray); margin-top: 8px; }
 
 /* ============ Гарантия ============ */
