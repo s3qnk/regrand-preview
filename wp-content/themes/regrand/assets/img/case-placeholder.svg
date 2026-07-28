@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
-  <rect width="320" height="240" fill="#ededf0"/>
-  <g opacity="0.5" stroke="#b9b9c1" stroke-width="5" fill="none" stroke-linecap="round">
-    <path d="M60 130h200"/>
-    <path d="M60 130l-18 16M260 130l18 16"/>
-    <rect x="130" y="115" width="60" height="30" rx="7"/>
-  </g>
-  <text x="160" y="190" text-anchor="middle" fill="#9a9aa3" font-family="system-ui, sans-serif" font-size="15">Фото скоро появится</text>
-</svg>

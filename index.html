@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preload" href="./wp-content/themes/regrand/assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="wp-content/themes/regrand/assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face {
 	font-family: 'Manrope';
-	src: url('../fonts/manrope-cyrillic.woff2') format('woff2');
+	src: url('wp-content/themes/regrand/assets/fonts/manrope-cyrillic.woff2') format('woff2');
 	font-weight: 200 800;
 	font-display: swap;
 	unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
 	font-family: 'Manrope';
-	src: url('../fonts/manrope-latin.woff2') format('woff2');
+	src: url('wp-content/themes/regrand/assets/fonts/manrope-latin.woff2') format('woff2');
 	font-weight: 200 800;
 	font-display: swap;
 	unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 
 :root {
 	--c-red: #d21f2b;
@@ -71,7 +72,9 @@ input, textarea { font: inherit; }
 	transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 .btn--primary { background: var(--c-red); color: #fff; }
-.btn--primary:hover { background: var(--c-red-dark); }
+.btn--primary:hover { background: var(--c-red-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(210, 31, 43, .3); }
+.btn { will-change: transform; }
+.btn:active { transform: translateY(0); }
 .btn--outline { background: transparent; color: var(--c-red); border-color: var(--c-red); }
 .btn--outline:hover { background: var(--c-red-light); }
 .btn--ghost { background: transparent; color: var(--c-ink); border-color: var(--c-line); }
@@ -122,7 +125,17 @@ input, textarea { font: inherit; }
 }
 
 /* Hero */
-.hero { background: linear-gradient(180deg, var(--c-bg-soft) 0%, var(--c-bg) 100%); overflow: hidden; }
+.hero { background: linear-gradient(180deg, var(--c-bg-soft) 0%, #edeff4 100%); overflow: hidden; position: relative; padding-bottom: 64px; }
+.hero__wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; pointer-events: none; }
+.hero__wave svg { display: block; width: 100%; height: 64px; }
+@media (prefers-reduced-motion: no-preference) {
+	.hero__content { animation: hero-in .6s ease both; }
+	.hero__media { animation: hero-in .6s ease .15s both; }
+	@keyframes hero-in {
+		from { opacity: 0; transform: translateY(20px); }
+		to { opacity: 1; transform: none; }
+	}
+}
 .hero__inner {
 	display: grid;
 	gap: 32px;
@@ -135,6 +148,7 @@ input, textarea { font: inherit; }
 	font-weight: 800;
 	letter-spacing: -.5px;
 	margin-bottom: 16px;
+	max-width: 24ch;
 }
 .hero__subtitle { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--c-gray); margin-bottom: 24px; }
 .hero__badges { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
@@ -150,6 +164,19 @@ input, textarea { font: inherit; }
 	font-weight: 600;
 }
 .hero__badge svg { color: var(--c-red); flex-shrink: 0; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__rating {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 18px;
+	font-size: 14px;
+	color: var(--c-gray);
+	text-decoration: none;
+}
+.hero__rating b { color: var(--c-ink); }
+.hero__rating:hover span:last-child { text-decoration: underline; }
+.hero__rating-stars { color: #f7a600; letter-spacing: 2px; }
 .hero__media { display: flex; justify-content: center; }
 .hero__media img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; object-fit: cover; }
 .hero__video {
@@ -195,15 +222,15 @@ input, textarea { font: inherit; }
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Регранд — ремонт рулевых реек в Самаре">
 <meta property="og:description" content="Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.">
-<meta property="og:url" content="./">
-<meta property="og:image" content="./wp-content/themes/regrand/assets/img/hero-placeholder.svg">
-<link rel="icon" href="./wp-content/themes/regrand/assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoRepair","name":"Регранд — центр рулевого управления","description":"Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.","url":"./","telephone":"+79093443355","address":{"@type":"PostalAddress","addressLocality":"Самара","streetAddress":"ул. Луцкая, 18","addressCountry":"RU"},"openingHours":"Mo-Su 09:00-19:00","priceRange":"₽₽"}</script>
+<meta property="og:url" content="https://s3qnk.github.io/regrand-preview/">
+<meta property="og:image" content="https://s3qnk.github.io/regrand-preview/wp-content/themes/regrand/assets/img/hero-placeholder.svg">
+<link rel="icon" href="wp-content/themes/regrand/assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoRepair","name":"Регранд — центр рулевого управления","description":"Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.","url":"https://s3qnk.github.io/regrand-preview/","telephone":"+79093443355","address":{"@type":"PostalAddress","addressLocality":"Самара","streetAddress":"ул. Луцкая, 18","addressCountry":"RU"},"openingHours":"Mo-Su 09:00-19:00","priceRange":"₽₽"}</script>
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 </style>
-<link rel="preload" as="style" href="./wp-content/themes/regrand/assets/css/main.css?ver=1.0.0" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="./wp-content/themes/regrand/assets/css/main.css?ver=1.0.0"></noscript>
+<link rel="preload" as="style" href="wp-content/themes/regrand/assets/css/main.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="wp-content/themes/regrand/assets/css/main.css"></noscript>
 <style id='global-styles-inline-css'>
 :root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
 /*# sourceURL=global-styles-inline-css */
@@ -213,8 +240,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <body class="home blog wp-theme-regrand">
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a href="./" class="site-header__brand">
-			<img class="site-header__logo-img" src="./wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands — центр рулевого управления" width="446" height="93">
+		<a href="index.html" class="site-header__brand">
+			<img class="site-header__logo-img" src="wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands — центр рулевого управления" width="446" height="93">
 			<span class="site-header__tagline">Центр рулевого управления</span>
 		</a>
 		<div class="site-header__contacts">
@@ -232,8 +259,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <section class="hero" id="hero">
 	<div class="container hero__inner">
 		<div class="hero__content">
-			<h1 class="hero__title">Ремонт рулевых реек: точно, в день обращения, с гарантией</h1>
-			<p class="hero__subtitle">Восстанавливаем рейки на любых авто: диагностика бесплатно, стоимость известна до начала работ</p>
+			<h1 class="hero__title">Ремонт рулевых реек: точно, в день обращения, с гарантией</h1>
+			<p class="hero__subtitle">Восстанавливаем рейки на любых авто: диагностика бесплатно, стоимость известна до начала работ</p>
 			<ul class="hero__badges">
 									<li class="hero__badge">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -247,14 +274,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							</ul>
 			<div class="hero__actions">
 				<button type="button" class="btn btn--primary btn--lg" data-modal="diagnostic">Записаться на диагностику</button>
+				<a class="btn btn--outline btn--lg" href="index.html#quiz">Рассчитать стоимость</a>
 			</div>
-		</div>
+							<a class="hero__rating" href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0%2C%20%D0%9B%D1%83%D1%86%D0%BA%D0%B0%D1%8F%2018" target="_blank" rel="noopener">
+					<span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+					<span><b>4,8</b> на Яндекс.Картах · 326 оценок</span>
+				</a>
+					</div>
 		<div class="hero__media">
 							<video class="hero__video" controls preload="none" playsinline width="360" height="640"
-					poster="./wp-content/uploads/2026/07/regrands-priem-poster.jpg">
-					<source src="./wp-content/uploads/2026/07/regrands-priem-klientov.mp4" type="video/mp4">
+					poster="wp-content/uploads/2026/07/regrands-priem-poster.jpg">
+					<source src="wp-content/uploads/2026/07/regrands-priem-klientov.mp4" type="video/mp4">
 				</video>
 					</div>
+	</div>
+	<div class="hero__wave" aria-hidden="true">
+		<svg viewBox="0 0 1440 64" preserveAspectRatio="none" focusable="false">
+			<path d="M0 40 C240 64 480 8 720 20 C960 32 1200 60 1440 28 L1440 64 L0 64 Z" fill="#ffffff"/>
+		</svg>
 	</div>
 </section>
 <section class="section services" id="services">
@@ -263,21 +300,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<p class="section__subtitle">Гарантия 6 месяцев на все виды работ. Цена фиксируется до начала ремонта.</p>
 		<div class="services__grid">
 							<article class="card service-card">
+					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h32"/><path d="M4 22l-2 4m36-4 2 4"/><rect x="14" y="16" width="12" height="10" rx="2"/><path d="M8 22v-3m4 3v-3m16 3v-3m4 3v-3"/></svg></span>
 					<h3 class="service-card__title">Механические рейки</h3>
 					<p class="service-card__price">от <strong>3 500 ₽</strong></p>
 					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
 				</article>
 							<article class="card service-card">
+					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5c6 7 10 12 10 18a10 10 0 1 1-20 0c0-6 4-11 10-18Z"/><path d="M15 24a5 5 0 0 0 5 5"/></svg></span>
 					<h3 class="service-card__title">Гидравлические рейки (ГУР)</h3>
 					<p class="service-card__price">от <strong>6 500 ₽</strong></p>
 					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
 				</article>
 							<article class="card service-card">
+					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M22 11l-8 11h6l-2 7 8-11h-6l2-7Z"/></svg></span>
 					<h3 class="service-card__title">Электрические рейки (ЭУР)</h3>
 					<p class="service-card__price">от <strong>8 500 ₽</strong></p>
 					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
 				</article>
 							<article class="card service-card">
+					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="3"/><path d="M20 8v6m8.5-2.5-4.2 4.2M32 20h-6m2.5 8.5-4.2-4.2M20 32v-6m-8.5 2.5 4.2-4.2M8 20h6m-2.5-8.5 4.2 4.2"/></svg></span>
 					<h3 class="service-card__title">Насосы ГУР / ЭГУР</h3>
 					<p class="service-card__price">от <strong>4 500 ₽</strong></p>
 					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
@@ -371,7 +412,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</ol>
 	</div>
 </section>
-<section class="section video" id="video">
+<section class="section section--dark video" id="video">
 	<div class="container">
 		<h2 class="section__title">Посмотрите, как проходит приём и ремонт</h2>
 		<p class="section__subtitle">Одна минута — и вы увидите наш техцентр изнутри: как принимаем автомобиль, проверяем рейку на стенде и что получает клиент на выходе.</p>
@@ -419,64 +460,172 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<h2 class="section__title">Примеры работ</h2>
 		<p class="section__subtitle">Реальные рейки наших клиентов: до, в процессе и после ремонта.</p>
 		<div class="cases__list">
-																				<article class="card case">
-						<h3 class="case__title">Toyota Camry — гидравлическая рейка</h3>
+												<article class="card case">
+						<h3 class="case__title">Nissan Almera — ремонт рулевой рейки (ГУР)</h3>
 						<div class="case__photos">
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/almera-priem.jpg" class="case__photo-link" data-lightbox="case-59" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/almera-priem-640x480.jpg" alt="Nissan Almera — ремонт рулевой рейки (ГУР) — до" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>До</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/almera-process.jpg" class="case__photo-link" data-lightbox="case-59" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/almera-process-640x480.jpg" alt="Nissan Almera — ремонт рулевой рейки (ГУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>Процесс</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/almera-after.jpg" class="case__photo-link" data-lightbox="case-59" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/almera-after-640x480.jpg" alt="Nissan Almera — ремонт рулевой рейки (ГУР) — после" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>После</figcaption>
 								</figure>
 													</div>
-						<p class="case__comment">Устранена течь, вал отшлифован, заменён ремкомплект. Проверена на стенде.</p>
-					</article>
+																			<p class="case__comment">Разобрали и восстановили рейку, проверили под давлением на диагностическом стенде.</p>
+											</article>
 									<article class="card case">
-						<h3 class="case__title">Kia Rio — электроусилитель (ЭУР)</h3>
+						<h3 class="case__title">Mercedes GLA — ремонт рулевой рейки (ЭУР)</h3>
 						<div class="case__photos">
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/gla-priem.jpg" class="case__photo-link" data-lightbox="case-55" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/gla-priem-640x480.jpg" alt="Mercedes GLA — ремонт рулевой рейки (ЭУР) — до" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>До</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/gla-process.jpg" class="case__photo-link" data-lightbox="case-55" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/gla-process-640x480.jpg" alt="Mercedes GLA — ремонт рулевой рейки (ЭУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>Процесс</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/gla-after.jpg" class="case__photo-link" data-lightbox="case-55" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/gla-after-640x480.jpg" alt="Mercedes GLA — ремонт рулевой рейки (ЭУР) — после" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>После</figcaption>
 								</figure>
 													</div>
-						<p class="case__comment">Заменён датчик момента, восстановлен разъём. Люфт устранён.</p>
-					</article>
+																			<p class="case__comment">Полная разборка, замена ремкомплекта, сборка и установка новых пыльников.</p>
+											</article>
 									<article class="card case">
-						<h3 class="case__title">Ford Focus — насос ГУР</h3>
+						<h3 class="case__title">Chevrolet Lacetti — ремонт рулевой рейки (ГУР)</h3>
 						<div class="case__photos">
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/lacetti-priem.jpg" class="case__photo-link" data-lightbox="case-51" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/lacetti-priem-640x480.jpg" alt="Chevrolet Lacetti — ремонт рулевой рейки (ГУР) — до" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>До</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/lacetti-process.jpg" class="case__photo-link" data-lightbox="case-51" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/lacetti-process-640x480.jpg" alt="Chevrolet Lacetti — ремонт рулевой рейки (ГУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>Процесс</figcaption>
 								</figure>
 															<figure class="case__photo">
-									<img src="./wp-content/themes/regrand/assets/img/case-placeholder.svg" alt="Фото скоро появится" loading="lazy" width="320" height="240">
+									<a href="wp-content/uploads/2026/07/lacetti-after.jpg" class="case__photo-link" data-lightbox="case-51" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/lacetti-after.jpg" alt="Chevrolet Lacetti — ремонт рулевой рейки (ГУР) — после" loading="lazy" width="320" height="240">
+									</a>
 									<figcaption>После</figcaption>
 								</figure>
 													</div>
-						<p class="case__comment">Заменены подшипник и уплотнения, гул исчез. Гарантия 6 месяцев.</p>
-					</article>
+																			<p class="case__comment">Дефектовка, ремонт и сборка гидравлической рейки с заменой уплотнений и пыльников.</p>
+											</article>
+									<article class="card case">
+						<h3 class="case__title">Zeekr — ремонт рулевой рейки (ЭУР)</h3>
+						<div class="case__photos">
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/zeekr-priem.jpg" class="case__photo-link" data-lightbox="case-47" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/zeekr-priem-640x480.jpg" alt="Zeekr — ремонт рулевой рейки (ЭУР) — до" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>До</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/zeekr-process.jpg" class="case__photo-link" data-lightbox="case-47" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/zeekr-process-640x480.jpg" alt="Zeekr — ремонт рулевой рейки (ЭУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>Процесс</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/zeekr-after.jpg" class="case__photo-link" data-lightbox="case-47" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/zeekr-after-640x480.jpg" alt="Zeekr — ремонт рулевой рейки (ЭУР) — после" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>После</figcaption>
+								</figure>
+													</div>
+																			<p class="case__comment">Сняли рейку, устранили неисправность, установили на автомобиль и проверили в работе.</p>
+											</article>
+									<article class="card case">
+						<h3 class="case__title">BMW 3 серии — ремонт рулевой рейки (ЭУР)</h3>
+						<div class="case__photos">
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/bmw3-priem.jpg" class="case__photo-link" data-lightbox="case-43" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/bmw3-priem-640x480.jpg" alt="BMW 3 серии — ремонт рулевой рейки (ЭУР) — до" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>До</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/bmw3-process.jpg" class="case__photo-link" data-lightbox="case-43" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/bmw3-process-640x480.jpg" alt="BMW 3 серии — ремонт рулевой рейки (ЭУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>Процесс</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/bmw3-after.jpg" class="case__photo-link" data-lightbox="case-43" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/bmw3-after-640x480.jpg" alt="BMW 3 серии — ремонт рулевой рейки (ЭУР) — после" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>После</figcaption>
+								</figure>
+													</div>
+																			<p class="case__comment">Рейка снята и продефектована, восстановлена с заменой пыльников. Проверена после сборки.</p>
+											</article>
+									<article class="card case">
+						<h3 class="case__title">Toyota Land Cruiser 300 — ремонт рулевой колонки</h3>
+						<div class="case__photos">
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/lc300-priem.jpg" class="case__photo-link" data-lightbox="case-39" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/lc300-priem-640x480.jpg" alt="Toyota Land Cruiser 300 — ремонт рулевой колонки — до" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>До</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/lc300-process.jpg" class="case__photo-link" data-lightbox="case-39" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/lc300-process-640x480.jpg" alt="Toyota Land Cruiser 300 — ремонт рулевой колонки — процесс" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>Процесс</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/lc300-after.jpg" class="case__photo-link" data-lightbox="case-39" aria-label="Открыть фото: После">
+										<img src="wp-content/uploads/2026/07/lc300-after-640x480.jpg" alt="Toyota Land Cruiser 300 — ремонт рулевой колонки — после" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>После</figcaption>
+								</figure>
+													</div>
+																			<p class="case__comment">Сняли и разобрали электромеханическую рулевую колонку, устранили неисправность, собрали и проверили работу узла.</p>
+											</article>
+									<article class="card case">
+						<h3 class="case__title">Geely Atlas — ремонт рулевой рейки (ЭУР)</h3>
+						<div class="case__photos">
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/geely-atlas-priem.jpg" class="case__photo-link" data-lightbox="case-35" aria-label="Открыть фото: До">
+										<img src="wp-content/uploads/2026/07/geely-atlas-priem-640x480.jpg" alt="Geely Atlas — ремонт рулевой рейки (ЭУР) — до" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>До</figcaption>
+								</figure>
+															<figure class="case__photo">
+									<a href="wp-content/uploads/2026/07/geely-atlas-defektovka.jpg" class="case__photo-link" data-lightbox="case-35" aria-label="Открыть фото: Процесс">
+										<img src="wp-content/uploads/2026/07/geely-atlas-defektovka-640x480.jpg" alt="Geely Atlas — ремонт рулевой рейки (ЭУР) — процесс" loading="lazy" width="320" height="240">
+									</a>
+									<figcaption>Процесс</figcaption>
+								</figure>
+													</div>
+																			<p class="case__comment">Приняли автомобиль, сняли и продефектовали рулевую рейку.</p>
+											</article>
 									</div>
 	</div>
 </section>
-<section class="section section--soft warranty" id="warranty">
+<section class="section warranty" id="warranty">
 	<div class="container">
 		<h2 class="section__title">Гарантия</h2>
 		<p class="section__subtitle">На все работы выдаём гарантийный талон. Условия — прозрачные и фиксируются в договоре.</p>
@@ -503,40 +652,40 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<p class="warranty__disclaimer">Гарантия не распространяется на резино-технические изделия, пыльники и рулевые тяги. Полные условия — в гарантийном талоне.</p>
 	</div>
 </section>
-<section class="section certificates" id="certificates">
+<section class="section section--soft certificates" id="certificates">
 	<div class="container">
 		<h2 class="section__title">Сертификаты</h2>
 		<p class="section__subtitle">Сертифицированный центр: работаем официально, качество подтверждено документами.</p>
 		<div class="certificates__row">
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-1.jpg" target="_blank" rel="noopener" title="Сертификат соответствия №1">
-					<img width="209" height="300" src="./wp-content/uploads/2026/07/cert-1-209x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат соответствия №1" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-1-209x300.jpg 209w, ./wp-content/uploads/2026/07/cert-1.jpg 714w" sizes="auto, (max-width: 209px) 100vw, 209px" />					<span class="certificate__label">Сертификат соответствия №1</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-1.jpg" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат соответствия №1">
+					<img width="209" height="300" src="wp-content/uploads/2026/07/cert-1-209x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат соответствия №1" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-1-209x300.jpg 209w, wp-content/uploads/2026/07/cert-1.jpg 714w" sizes="auto, (max-width: 209px) 100vw, 209px" />					<span class="certificate__label">Сертификат соответствия №1</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-2.jpg" target="_blank" rel="noopener" title="Сертификат соответствия №2">
-					<img width="208" height="300" src="./wp-content/uploads/2026/07/cert-2-208x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат соответствия №2" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-2-208x300.jpg 208w, ./wp-content/uploads/2026/07/cert-2.jpg 710w" sizes="auto, (max-width: 208px) 100vw, 208px" />					<span class="certificate__label">Сертификат соответствия №2</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-2.jpg" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат соответствия №2">
+					<img width="208" height="300" src="wp-content/uploads/2026/07/cert-2-208x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат соответствия №2" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-2-208x300.jpg 208w, wp-content/uploads/2026/07/cert-2.jpg 710w" sizes="auto, (max-width: 208px) 100vw, 208px" />					<span class="certificate__label">Сертификат соответствия №2</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-3.jpg" target="_blank" rel="noopener" title="Сертификат Corteco">
-					<img width="218" height="300" src="./wp-content/uploads/2026/07/cert-3-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат Corteco" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-3-218x300.jpg 218w, ./wp-content/uploads/2026/07/cert-3.jpg 718w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат Corteco</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-3.jpg" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат Corteco">
+					<img width="218" height="300" src="wp-content/uploads/2026/07/cert-3-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат Corteco" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-3-218x300.jpg 218w, wp-content/uploads/2026/07/cert-3.jpg 718w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат Corteco</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-4.png" target="_blank" rel="noopener" title="Свидетельство РеГранд">
-					<img width="212" height="300" src="./wp-content/uploads/2026/07/cert-4-212x300.png" class="attachment-medium size-medium wp-post-image" alt="Свидетельство РеГранд" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-4-212x300.png 212w, ./wp-content/uploads/2026/07/cert-4.png 725w" sizes="auto, (max-width: 212px) 100vw, 212px" />					<span class="certificate__label">Свидетельство РеГранд</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-4.png" data-lightbox="certs" target="_blank" rel="noopener" title="Свидетельство РеГранд">
+					<img width="212" height="300" src="wp-content/uploads/2026/07/cert-4-212x300.png" class="attachment-medium size-medium wp-post-image" alt="Свидетельство РеГранд" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-4-212x300.png 212w, wp-content/uploads/2026/07/cert-4.png 725w" sizes="auto, (max-width: 212px) 100vw, 212px" />					<span class="certificate__label">Свидетельство РеГранд</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-5.jpg" target="_blank" rel="noopener" title="Сертификат дилера — продукция">
-					<img width="218" height="300" src="./wp-content/uploads/2026/07/cert-5-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат дилера — продукция" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-5-218x300.jpg 218w, ./wp-content/uploads/2026/07/cert-5.jpg 744w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат дилера — продукция</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-5.jpg" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат дилера — продукция">
+					<img width="218" height="300" src="wp-content/uploads/2026/07/cert-5-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат дилера — продукция" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-5-218x300.jpg 218w, wp-content/uploads/2026/07/cert-5.jpg 744w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат дилера — продукция</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-6.jpg" target="_blank" rel="noopener" title="Сертификат дилера — техцентр">
-					<img width="218" height="300" src="./wp-content/uploads/2026/07/cert-6-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат дилера — техцентр" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-6-218x300.jpg 218w, ./wp-content/uploads/2026/07/cert-6.jpg 744w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат дилера — техцентр</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-6.jpg" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат дилера — техцентр">
+					<img width="218" height="300" src="wp-content/uploads/2026/07/cert-6-218x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Сертификат дилера — техцентр" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-6-218x300.jpg 218w, wp-content/uploads/2026/07/cert-6.jpg 744w" sizes="auto, (max-width: 218px) 100vw, 218px" />					<span class="certificate__label">Сертификат дилера — техцентр</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-7.png" target="_blank" rel="noopener" title="Сертификат Alleva Group">
-					<img width="210" height="300" src="./wp-content/uploads/2026/07/cert-7-210x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Alleva Group" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-7-210x300.png 210w, ./wp-content/uploads/2026/07/cert-7.png 716w" sizes="auto, (max-width: 210px) 100vw, 210px" />					<span class="certificate__label">Сертификат Alleva Group</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-7.png" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат Alleva Group">
+					<img width="210" height="300" src="wp-content/uploads/2026/07/cert-7-210x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Alleva Group" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-7-210x300.png 210w, wp-content/uploads/2026/07/cert-7.png 716w" sizes="auto, (max-width: 210px) 100vw, 210px" />					<span class="certificate__label">Сертификат Alleva Group</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-8.png" target="_blank" rel="noopener" title="Сертификат Lubex">
-					<img width="209" height="300" src="./wp-content/uploads/2026/07/cert-8-209x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Lubex" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-8-209x300.png 209w, ./wp-content/uploads/2026/07/cert-8.png 715w" sizes="auto, (max-width: 209px) 100vw, 209px" />					<span class="certificate__label">Сертификат Lubex</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-8.png" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат Lubex">
+					<img width="209" height="300" src="wp-content/uploads/2026/07/cert-8-209x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Lubex" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-8-209x300.png 209w, wp-content/uploads/2026/07/cert-8.png 715w" sizes="auto, (max-width: 209px) 100vw, 209px" />					<span class="certificate__label">Сертификат Lubex</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-9.png" target="_blank" rel="noopener" title="Сертификат Reinwell">
-					<img width="211" height="300" src="./wp-content/uploads/2026/07/cert-9-211x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Reinwell" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-9-211x300.png 211w, ./wp-content/uploads/2026/07/cert-9.png 721w" sizes="auto, (max-width: 211px) 100vw, 211px" />					<span class="certificate__label">Сертификат Reinwell</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-9.png" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат Reinwell">
+					<img width="211" height="300" src="wp-content/uploads/2026/07/cert-9-211x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Reinwell" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-9-211x300.png 211w, wp-content/uploads/2026/07/cert-9.png 721w" sizes="auto, (max-width: 211px) 100vw, 211px" />					<span class="certificate__label">Сертификат Reinwell</span>
 				</a>
-							<a class="certificate" href="./wp-content/uploads/2026/07/cert-10.png" target="_blank" rel="noopener" title="Сертификат Liqui Moly">
-					<img width="208" height="300" src="./wp-content/uploads/2026/07/cert-10-208x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Liqui Moly" loading="lazy" decoding="async" srcset="./wp-content/uploads/2026/07/cert-10-208x300.png 208w, ./wp-content/uploads/2026/07/cert-10.png 711w" sizes="auto, (max-width: 208px) 100vw, 208px" />					<span class="certificate__label">Сертификат Liqui Moly</span>
+							<a class="certificate" href="wp-content/uploads/2026/07/cert-10.png" data-lightbox="certs" target="_blank" rel="noopener" title="Сертификат Liqui Moly">
+					<img width="208" height="300" src="wp-content/uploads/2026/07/cert-10-208x300.png" class="attachment-medium size-medium wp-post-image" alt="Сертификат Liqui Moly" loading="lazy" decoding="async" srcset="wp-content/uploads/2026/07/cert-10-208x300.png 208w, wp-content/uploads/2026/07/cert-10.png 711w" sizes="auto, (max-width: 208px) 100vw, 208px" />					<span class="certificate__label">Сертификат Liqui Moly</span>
 				</a>
 					</div>
 	</div>
@@ -663,7 +812,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<input type="hidden" name="ts" value="">
 				<label class="consent">
 					<input type="checkbox" name="consent" required>
-					<span>Согласен на <a href="./policy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+					<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
 				</label>
 			</fieldset>
 
@@ -676,7 +825,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</form>
 	</div>
 </section>
-<section class="section faq" id="faq">
+<section class="section section--soft faq" id="faq">
 	<div class="container faq__container">
 		<h2 class="section__title">Вопросы и ответы</h2>
 		<div class="faq__list">
@@ -712,7 +861,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	</div>
 	<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Какая гарантия на ремонт?","acceptedAnswer":{"@type":"Answer","text":"На ремонт рулевых реек — 6 месяцев или до 20 000 км пробега. На ремонт насосов ГУР/ЭГУР — 3 месяца или до 5 000 км. На все работы выдаём гарантийный талон."}},{"@type":"Question","name":"Я не знаю, какая у меня рейка. Что делать?","acceptedAnswer":{"@type":"Answer","text":"Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику: проверим агрегат на стенде и точно назовём причину неисправности."}},{"@type":"Question","name":"Какие признаки неисправности рулевого управления?","acceptedAnswer":{"@type":"Answer","text":"Стук на руле или в подвеске, подтекание масла, шум насоса ГУР, тугой руль, люфт в рулевом колесе, ошибки на приборной панели. Заметили хотя бы один — приезжайте на бесплатную диагностику, пока ремонт не стал дороже."}},{"@type":"Question","name":"Сколько времени занимает ремонт?","acceptedAnswer":{"@type":"Answer","text":"В большинстве случаев — от 1 рабочего дня. Точный срок назовём после диагностики и согласования работ — до начала ремонта."}},{"@type":"Question","name":"Я из другого города. Как отправить рейку в ремонт?","acceptedAnswer":{"@type":"Answer","text":"Отправьте агрегат любой транспортной компанией — отремонтируем и вернём тем же способом. До терминала транспортной компании в Самаре довезём бесплатно."}},{"@type":"Question","name":"Нужного агрегата нет в наличии — что делать?","acceptedAnswer":{"@type":"Answer","text":"Свяжитесь с менеджером: возможно скорое поступление. Либо отремонтируем или восстановим ваш агрегат в заводских условиях — это быстрее и дешевле покупки нового."}},{"@type":"Question","name":"Как можно оплатить?","acceptedAnswer":{"@type":"Answer","text":"Наличными или картой на месте, для организаций — безналичный расчёт с документами."}}]}</script>
 </section>
-<section class="section section--soft contacts" id="contacts">
+<section class="section contacts" id="contacts">
 	<div class="container">
 		<h2 class="section__title">Контакты и проезд</h2>
 		<div class="contacts__grid">
@@ -739,8 +888,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</dl>
 				<div class="contacts__messengers">
-											<a class="btn btn--outline" href="https://wa.me/79093443355" target="_blank" rel="noopener" data-messenger>WhatsApp</a>
-																					<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
+																<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
 										<button type="button" class="btn btn--primary" data-modal="callback">Заказать обратный звонок</button>
 				</div>
 				<p class="contacts__note">Удобная парковка у входа. Можно привезти рейку отдельно — без автомобиля.</p>
@@ -756,7 +904,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <footer class="site-footer">
 	<div class="container site-footer__inner">
 		<div>
-			<img class="site-footer__logo" src="./wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands" width="446" height="93" loading="lazy">
+			<img class="site-footer__logo" src="wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands" width="446" height="93" loading="lazy">
 			<p class="site-footer__legal">ИП Арзамасцев А.Н., ИНН 631403671087, ОГРНИП 312631835200025</p>
 		</div>
 		<div class="site-footer__contacts">
@@ -765,7 +913,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			<span>г. Самара, ул. Луцкая, 18</span>
 							<a href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
 					</div>
-		<a class="site-footer__policy" href="./policy/">Политика конфиденциальности</a>
+		<a class="site-footer__policy" href="policy/index.html">Политика конфиденциальности</a>
 	</div>
 </footer>
 <dialog class="modal" id="modal-diagnostic">
@@ -776,11 +924,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<form class="lead-form" data-lead-form data-form-type="hero" data-goal="lead_hero" novalidate>
 			<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
 			<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
+			<label class="lead-form__field-label" for="diag-date">Удобная дата диагностики (по желанию)</label>
+			<input class="lead-form__input" type="date" name="date" id="diag-date"
+				min="2026-07-28"
+				max="2026-08-27">
 			<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 			<input type="hidden" name="ts" value="">
 			<label class="consent">
 				<input type="checkbox" name="consent" required>
-				<span>Согласен на <a href="./policy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+				<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
 			</label>
 			<button type="submit" class="btn btn--primary btn--block">Записаться на диагностику</button>
 			<div class="lead-form__status" role="status" aria-live="polite"></div>
@@ -799,7 +951,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			<input type="hidden" name="ts" value="">
 			<label class="consent">
 				<input type="checkbox" name="consent" required>
-				<span>Согласен на <a href="./policy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+				<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
 			</label>
 			<button type="submit" class="btn btn--primary btn--block">Перезвоните мне</button>
 			<div class="lead-form__status" role="status" aria-live="polite"></div>
@@ -810,9 +962,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/regrand/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 <script id="regrand-main-js-extra">
-var REGRAND = {"endpoint":"./wp-json/regrand/v1/lead","metrikaId":""};
+var REGRAND = {"endpoint":"https://s3qnk.github.io/regrand-preview/wp-json/regrand/v1/lead","metrikaId":""};
 //# sourceURL=regrand-main-js-extra
 </script>
-<script type="module" src="./wp-content/themes/regrand/assets/js/main.js?ver=1.0.0"></script>
+<script type="module" src="wp-content/themes/regrand/assets/js/main.js"></script>
 </body>
 </html>
