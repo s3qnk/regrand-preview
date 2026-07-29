@@ -410,9 +410,15 @@ select.lead-form__input {
 .contacts__title { color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
 .contacts__cards { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
-	.contacts__cards { grid-template-columns: minmax(340px, 420px); justify-content: end; }
+	.contacts__cards { grid-template-columns: minmax(320px, 390px); justify-content: end; }
 }
-.contacts__card { padding: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
+.contacts__card {
+	padding: 24px;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+	background: rgba(255, 255, 255, .82);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
 .contacts__card-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
 .contacts__card-text { font-size: 14px; color: var(--c-gray); margin-bottom: 14px; }
 .contacts__card .btn--block { margin: 14px 0 12px; }
