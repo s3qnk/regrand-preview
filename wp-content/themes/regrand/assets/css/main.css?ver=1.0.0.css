@@ -460,6 +460,7 @@ select.lead-form__input {
 }
 .site-footer__bottom .site-footer__legal { margin: 0; flex: 1; }
 .site-footer__bottom .site-footer__policy { margin-left: auto; }
+.site-footer__copyright { font-size: 12px; color: #6f6f78; margin-top: 16px; }
 .site-footer__heading { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
 .site-footer__list { display: grid; gap: 12px; margin-bottom: 16px; }
 .site-footer__list dt { font-size: 13px; color: #8f8f9a; margin-bottom: 2px; }
