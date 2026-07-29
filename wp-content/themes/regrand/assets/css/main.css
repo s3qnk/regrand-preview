@@ -414,8 +414,23 @@ select.lead-form__input {
 /* Расширенный подвал с контактами и формой. */
 .site-footer__grid { display: grid; gap: 32px; }
 @media (min-width: 1024px) {
-	.site-footer__grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+	.site-footer__grid { grid-template-columns: 1fr 1fr; gap: 56px; }
+	.site-footer__grid .site-footer__col + .site-footer__col {
+		border-left: 1px solid rgba(255, 255, 255, .12);
+		padding-left: 56px;
+	}
 }
+.site-footer__bottom {
+	border-top: 1px solid rgba(255, 255, 255, .12);
+	margin-top: 40px;
+	padding-top: 24px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 24px;
+}
+.site-footer__bottom .site-footer__legal { margin: 0; flex: 1; }
+.site-footer__bottom .site-footer__policy { margin-left: auto; }
 .site-footer__heading { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
 .site-footer__list { display: grid; gap: 12px; margin-bottom: 16px; }
 .site-footer__list dt { font-size: 13px; color: #8f8f9a; margin-bottom: 2px; }
