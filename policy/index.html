@@ -290,18 +290,48 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 	</article>
 	</main>
 <footer class="site-footer">
-	<div class="container site-footer__inner">
-		<div>
-			<img class="site-footer__logo" src="../wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands" width="446" height="93" loading="lazy">
-			<p class="site-footer__legal">ИП Арзамасцев А.Н., ИНН 631403671087, ОГРНИП 312631835200025</p>
+	<div class="container">
+		<div class="site-footer__grid">
+			<div class="site-footer__col">
+				<img class="site-footer__logo" src="../wp-content/themes/regrand/assets/img/logo-regrands.png" alt="ReGrands" width="446" height="93" loading="lazy">
+				<p class="site-footer__legal">ИП Арзамасцев А.Н., ИНН 631403671087, ОГРНИП 312631835200025</p>
+				<a class="site-footer__policy" href="index.html">Политика конфиденциальности</a>
+			</div>
+			<div class="site-footer__col">
+				<h3 class="site-footer__heading">Контактная информация</h3>
+				<dl class="site-footer__list">
+					<div><dt>Адрес</dt><dd>г. Самара, ул. Луцкая, 18</dd></div>
+					<div><dt>График работы</dt><dd>Пн–Пт с 9:00 до 19:00</dd></div>
+					<div><dt>Телефоны</dt><dd>
+						<a href="tel:+79093443355">+7 (909) 344-33-55</a><br>
+						<a href="tel:+78462443355">+7 (846) 244-33-55</a>
+					</dd></div>
+					<div><dt>Email</dt><dd><a href="mailto:Info@regrands.ru">Info@regrands.ru</a></dd></div>
+				</dl>
+				<div class="site-footer__actions">
+					<a class="btn btn--primary" href="https://yandex.ru/maps/org/remont_rulevykh_reyek/232952442705/" target="_blank" rel="noopener">Построить маршрут</a>
+											<a class="btn btn--outline" href="https://max.ru/u/f9LHodD0cOKI0WPbhuxXiKWs1xZpZC6nUwHiPnHPZtQZX6oqGKMk47YAbSw" target="_blank" rel="noopener" data-messenger>MAX</a>
+																<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
+									</div>
+				<p class="site-footer__note">Удобная парковка у входа. Можно привезти рейку отдельно — без автомобиля.</p>
+			</div>
+			<div class="site-footer__col">
+				<h3 class="site-footer__heading">Заказать звонок</h3>
+				<p class="site-footer__note">Перезвоним в рабочее время и ответим на вопросы.</p>
+				<form class="lead-form" data-lead-form data-form-type="callback" data-goal="lead_callback" novalidate>
+					<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
+					<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
+					<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+					<input type="hidden" name="ts" value="">
+					<label class="consent">
+						<input type="checkbox" name="consent" required>
+						<span>Согласен на <a href="index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
+					</label>
+					<button type="submit" class="btn btn--primary btn--block">Перезвоните мне</button>
+					<div class="lead-form__status" role="status" aria-live="polite"></div>
+				</form>
+			</div>
 		</div>
-		<div class="site-footer__contacts">
-			<a href="tel:+79093443355">+7 (909) 344-33-55</a>
-			<a href="mailto:Info@regrands.ru">Info@regrands.ru</a>
-			<span>г. Самара, ул. Луцкая, 18</span>
-							<a href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
-					</div>
-		<a class="site-footer__policy" href="index.html">Политика конфиденциальности</a>
 	</div>
 </footer>
 <dialog class="modal" id="modal-diagnostic">

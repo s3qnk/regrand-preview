@@ -403,33 +403,30 @@ select.lead-form__input {
 .faq__answer { padding: 0 0 16px; color: var(--c-gray); }
 
 /* ============ Контакты ============ */
-/* Мобильные: карта сверху, контакты обычным потоком ниже. */
+/* Карта — чистая секция; данные показывает балун Яндекса. Контакты — в подвале. */
 .contacts--map { position: relative; overflow: hidden; background: var(--c-ink); }
-.contacts__mapbg { position: relative; height: 340px; }
-.contacts__mapbg iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.contacts__overlay { position: relative; z-index: 1; padding-top: 40px; padding-bottom: 56px; }
-.contacts__title { color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
-.contacts__cards { display: grid; gap: 20px; align-items: stretch; }
-.contacts__card { padding: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
-
-/* Десктоп: карта — фон всей секции, контактная информация и форма — внизу поверх карты. */
-@media (min-width: 1024px) {
-	.contacts--map { display: flex; flex-direction: column; justify-content: flex-end; min-height: 760px; padding: 56px 0 48px; }
-	.contacts__mapbg { position: absolute; inset: 0; height: auto; }
-	.contacts__overlay { padding-top: 0; padding-bottom: 0; pointer-events: none; }
-	.contacts__overlay .card,
-	.contacts__overlay a,
-	.contacts__overlay button,
-	.contacts__overlay input,
-	.contacts__overlay label { pointer-events: auto; }
-	.contacts__title { margin-bottom: 16px; }
-	.contacts__cards { grid-template-columns: 1fr 1fr; gap: 24px; }
-	.contacts__card {
-		background: rgba(255, 255, 255, .88);
-		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px);
-	}
+.contacts__mapbg { position: relative; height: 380px; }
+@media (min-width: 768px) {
+	.contacts__mapbg { height: 480px; }
 }
+.contacts__mapbg iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Расширенный подвал с контактами и формой. */
+.site-footer__grid { display: grid; gap: 32px; }
+@media (min-width: 1024px) {
+	.site-footer__grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+}
+.site-footer__heading { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+.site-footer__list { display: grid; gap: 12px; margin-bottom: 16px; }
+.site-footer__list dt { font-size: 13px; color: #8f8f9a; margin-bottom: 2px; }
+.site-footer__list dd,
+.site-footer__list dd a { color: #fff; text-decoration: none; }
+.site-footer__list dd a:hover { color: var(--c-red-light); }
+.site-footer__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.site-footer__note { font-size: 13px; color: #8f8f9a; margin-bottom: 12px; }
+.site-footer .lead-form { display: grid; gap: 12px; max-width: 420px; }
+.site-footer .consent { color: #8f8f9a; }
+.site-footer .consent a { color: #b9bac4; }
 .contacts__card-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
 .contacts__card-text { font-size: 14px; color: var(--c-gray); margin-bottom: 14px; }
 .contacts__card .btn--block { margin: 14px 0 12px; }
