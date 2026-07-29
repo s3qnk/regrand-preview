@@ -173,6 +173,19 @@
 .quiz__nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; }
 .quiz__nav .quiz__next { margin-left: auto; }
 
+.quiz__fields { display: grid; gap: 12px; margin-bottom: 20px; }
+.quiz__form .consent { margin: 0 0 18px; }
+@media (min-width: 768px) {
+	.quiz__fields { grid-template-columns: 1fr 1fr; }
+}
+select.lead-form__input {
+	appearance: none;
+	-webkit-appearance: none;
+	background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='m1 1.5 5 5 5-5' stroke='%236b6b74' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+	padding-right: 40px;
+	cursor: pointer;
+}
+
 /* ============ Видео ============ */
 .video__grid { display: grid; gap: 32px; align-items: center; }
 .video__points { list-style: none; display: grid; gap: 10px; margin-bottom: 24px; }
@@ -307,6 +320,7 @@
 	display: flex;
 	gap: 16px;
 	overflow-x: auto;
+	overflow-y: hidden; /* иначе overflow-x:auto наводит и вертикальный скролл */
 	scroll-snap-type: x mandatory;
 	-webkit-overflow-scrolling: touch;
 	padding-bottom: 12px;

@@ -164,6 +164,12 @@ input, textarea { font: inherit; }
 	font-weight: 600;
 }
 .hero__badge svg { color: var(--c-red); flex-shrink: 0; }
+.hero__rotate {
+	color: var(--c-red);
+	display: inline-block;
+	transition: opacity .25s ease, transform .25s ease;
+}
+.hero__rotate.is-out { opacity: 0; transform: translateY(10px); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero__rating {
 	display: inline-flex;
@@ -217,15 +223,15 @@ input, textarea { font: inherit; }
 </style>
 <title>Регранд — ремонт рулевых реек в Самаре</title>
 <meta name='robots' content='max-image-preview:large' />
-<meta name="description" content="Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.">
+<meta name="description" content="Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, рулевые колонки, насосы. Бесплатная диагностика, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Регранд — ремонт рулевых реек в Самаре">
-<meta property="og:description" content="Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.">
+<meta property="og:description" content="Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, рулевые колонки, насосы. Бесплатная диагностика, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.">
 <meta property="og:url" content="https://s3qnk.github.io/regrand-preview/">
 <meta property="og:image" content="https://s3qnk.github.io/regrand-preview/wp-content/themes/regrand/assets/img/hero-placeholder.svg">
 <link rel="icon" href="wp-content/themes/regrand/assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoRepair","name":"Регранд — центр рулевого управления","description":"Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, насосы. Бесплатная диагностика на собственном стенде, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.","url":"https://s3qnk.github.io/regrand-preview/","telephone":"+79093443355","address":{"@type":"PostalAddress","addressLocality":"Самара","streetAddress":"ул. Луцкая, 18","addressCountry":"RU"},"openingHours":"Mo-Su 09:00-19:00","priceRange":"₽₽"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoRepair","name":"Регранд — центр рулевого управления","description":"Ремонт рулевых реек в Самаре: механические, ГУР, ЭУР, рулевые колонки, насосы. Бесплатная диагностика, ремонт от 1 дня, гарантия 6 месяцев. Ул. Луцкая, 18.","url":"https://s3qnk.github.io/regrand-preview/","telephone":"+79093443355","address":{"@type":"PostalAddress","addressLocality":"Самара","streetAddress":"ул. Луцкая, 18","addressCountry":"RU"},"openingHours":"Mo-Su 09:00-19:00","priceRange":"₽₽"}</script>
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -247,7 +253,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<div class="site-header__contacts">
 			<a class="site-header__phone" href="tel:+79093443355">
 				+7 (909) 344-33-55			</a>
-			<span class="site-header__schedule">г. Самара, ул. Луцкая, 18 · Ежедневно с 9:00 до 19:00, без выходных</span>
+			<span class="site-header__schedule">г. Самара, ул. Луцкая, 18 · Пн–Пт с 9:00 до 19:00</span>
 		</div>
 		<a class="site-header__phone-btn" href="tel:+79093443355" aria-label="Позвонить: +7 (909) 344-33-55">
 			<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
@@ -259,18 +265,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <section class="hero" id="hero">
 	<div class="container hero__inner">
 		<div class="hero__content">
-			<h1 class="hero__title">Ремонт рулевых реек: точно, в день обращения, с гарантией</h1>
-			<p class="hero__subtitle">Восстанавливаем рейки на любых авто: диагностика бесплатно, стоимость известна до начала работ</p>
+			<h1 class="hero__title">Ремонт <span class="hero__rotate" data-rotate="[&quot;\u0440\u0443\u043b\u0435\u0432\u044b\u0445 \u0440\u0435\u0435\u043a&quot;,&quot;\u0440\u0443\u043b\u0435\u0432\u044b\u0445 \u043a\u043e\u043b\u043e\u043d\u043e\u043a&quot;,&quot;\u043d\u0430\u0441\u043e\u0441\u043e\u0432 \u0413\u0423\u0420\/\u042d\u0413\u0423\u0420&quot;]">рулевых реек</span>: в день обращения, с гарантией</h1>
+			<p class="hero__subtitle">Восстанавливаем рейки любой сложности: диагностика бесплатно, цену фиксируем до начала работ</p>
 			<ul class="hero__badges">
 									<li class="hero__badge">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 						Гарантия 6 месяцев					</li>
 									<li class="hero__badge">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						Собственный диагностический стенд					</li>
+						Собственное оборудование					</li>
 									<li class="hero__badge">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						Опыт более 10 лет					</li>
+						Опыт более 14 лет					</li>
 							</ul>
 			<div class="hero__actions">
 				<button type="button" class="btn btn--primary btn--lg" data-modal="diagnostic">Записаться на диагностику</button>
@@ -282,7 +288,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</a>
 					</div>
 		<div class="hero__media">
-							<video class="hero__video" controls preload="none" playsinline width="360" height="640"
+							<video class="hero__video" autoplay muted loop playsinline preload="metadata"
+					width="360" height="640"
+					onclick="this.muted=!this.muted"
+					title="Нажмите, чтобы включить или выключить звук"
 					poster="wp-content/uploads/2026/07/regrands-priem-poster.jpg">
 					<source src="wp-content/uploads/2026/07/regrands-priem-klientov.mp4" type="video/mp4">
 				</video>
@@ -297,31 +306,36 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <section class="section services" id="services">
 	<div class="container">
 		<h2 class="section__title">Мы ремонтируем</h2>
-		<p class="section__subtitle">Гарантия 6 месяцев на все виды работ. Цена фиксируется до начала ремонта.</p>
 		<div class="services__grid">
 							<article class="card service-card">
 					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h32"/><path d="M4 22l-2 4m36-4 2 4"/><rect x="14" y="16" width="12" height="10" rx="2"/><path d="M8 22v-3m4 3v-3m16 3v-3m4 3v-3"/></svg></span>
 					<h3 class="service-card__title">Механические рейки</h3>
 					<p class="service-card__price">от <strong>3 500 ₽</strong></p>
-					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
+					<p class="service-card__note">Стоимость — после бесплатной диагностики</p>
 				</article>
 							<article class="card service-card">
 					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5c6 7 10 12 10 18a10 10 0 1 1-20 0c0-6 4-11 10-18Z"/><path d="M15 24a5 5 0 0 0 5 5"/></svg></span>
 					<h3 class="service-card__title">Гидравлические рейки (ГУР)</h3>
 					<p class="service-card__price">от <strong>6 500 ₽</strong></p>
-					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
+					<p class="service-card__note">Стоимость — после бесплатной диагностики</p>
 				</article>
 							<article class="card service-card">
 					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M22 11l-8 11h6l-2 7 8-11h-6l2-7Z"/></svg></span>
 					<h3 class="service-card__title">Электрические рейки (ЭУР)</h3>
 					<p class="service-card__price">от <strong>8 500 ₽</strong></p>
-					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
+					<p class="service-card__note">Стоимость — после бесплатной диагностики</p>
 				</article>
 							<article class="card service-card">
 					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="3"/><path d="M20 8v6m8.5-2.5-4.2 4.2M32 20h-6m2.5 8.5-4.2-4.2M20 32v-6m-8.5 2.5 4.2-4.2M8 20h6m-2.5-8.5 4.2 4.2"/></svg></span>
 					<h3 class="service-card__title">Насосы ГУР / ЭГУР</h3>
 					<p class="service-card__price">от <strong>4 500 ₽</strong></p>
-					<p class="service-card__note">Точная стоимость — после бесплатной диагностики на стенде</p>
+					<p class="service-card__note">Стоимость — после бесплатной диагностики</p>
+				</article>
+							<article class="card service-card">
+					<span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="14" r="9"/><circle cx="20" cy="14" r="3"/><path d="M20 17v14m-4 3 4-3 4 3"/><path d="M11 14h6m6 0h6"/></svg></span>
+					<h3 class="service-card__title">Рулевые колонки (ЭУР)</h3>
+					<p class="service-card__price">от <strong>5 500 ₽</strong></p>
+					<p class="service-card__note">Стоимость — после бесплатной диагностики</p>
 				</article>
 					</div>
 		<div class="services__cta">
@@ -335,15 +349,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<h2 class="section__title">Почему выбирают нас</h2>
 		<div class="benefits__grid">
 							<div class="benefit">
-					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg></span>
-					<span class="benefit__text">Собственный стенд для проверки реек</span>
+					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.4 3 7.4 7 9 4-1.6 7-4.6 7-9V6l-7-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+					<span class="benefit__text">Гарантийный талон на все работы</span>
 				</div>
 							<div class="benefit">
-					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 7l2-3h12l2 3M12 11v5m-3-2.5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-					<span class="benefit__text">Агрегаты и комплектующие в наличии</span>
-				</div>
-							<div class="benefit">
-					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 12h6m-3-3v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3m0 0h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
 					<span class="benefit__text">Фиксированная стоимость после согласования</span>
 				</div>
 							<div class="benefit">
@@ -351,62 +361,66 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<span class="benefit__text">Срок ремонта от 1 рабочего дня</span>
 				</div>
 							<div class="benefit">
+					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 7l2-3h12l2 3M12 11v5m-3-2.5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+					<span class="benefit__text">Оригинальные комплектующие в наличии</span>
+				</div>
+							<div class="benefit">
+					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 6.5a4 4 0 0 0-5.6 4.6L3 17v4h4l5.9-5.9a4 4 0 0 0 4.6-5.6l-2.6 2.6-2.8-.7-.7-2.8 2.6-2.6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+					<span class="benefit__text">Ремонтируем весь узел: рейки, колонки, насосы</span>
+				</div>
+							<div class="benefit">
 					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 16V8h11v8m0-5h4l3 3v2h-7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="18" r="2" stroke="currentColor" stroke-width="2"/></svg></span>
 					<span class="benefit__text">Заберём и доставим вашу рейку</span>
 				</div>
 							<div class="benefit">
-					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12v8H4v-8m8-2v10M2 7h20v3H2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 7c-2-4-6-4-6-1s4 1 6 1Zm0 0c2-4 6-4 6-1s-4 1-6 1Z" stroke="currentColor" stroke-width="2"/></svg></span>
-					<span class="benefit__text">Скидка за ваш неисправный агрегат</span>
+					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 7v10l8 4 8-4V7l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+					<span class="benefit__text">Можно привезти рейку отдельно — без автомобиля</span>
 				</div>
 							<div class="benefit">
 					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-					<span class="benefit__text">Только оригинальные комплектующие</span>
-				</div>
-							<div class="benefit">
-					<span class="benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4m8-4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-					<span class="benefit__text">Работаем без выходных</span>
+					<span class="benefit__text">4,8 на Яндекс.Картах — 326 оценок</span>
 				</div>
 					</div>
 	</div>
 </section>
 <section class="section process" id="process">
 	<div class="container">
-		<h2 class="section__title">Как мы ремонтируем</h2>
+		<h2 class="section__title">Этапы ремонта: от приёма до сдачи</h2>
 		<p class="section__subtitle">Прозрачный процесс: вы знаете, что происходит с вашей рейкой на каждом этапе.</p>
 		<ol class="process__list">
 							<li class="process__step">
 					<span class="process__num">1</span>
 					<div>
 						<h3 class="process__title">Приём и осмотр</h3>
-						<p class="process__text">Принимаем рейку или автомобиль, проводим визуальный осмотр и фиксируем состояние.</p>
+						<p class="process__text">Оформление документов на осмотр автомобиля или на диагностику снятого агрегата.</p>
 					</div>
 				</li>
 							<li class="process__step">
 					<span class="process__num">2</span>
 					<div>
-						<h3 class="process__title">Диагностика на стенде</h3>
-						<p class="process__text">Проверяем агрегат на собственном стенде — находим точную причину неисправности. Диагностика бесплатна.</p>
+						<h3 class="process__title">Диагностика рулевой рейки</h3>
+						<p class="process__text">Осмотр рулевого управления автомобиля на подъёмнике или снятого агрегата на стенде.</p>
 					</div>
 				</li>
 							<li class="process__step">
 					<span class="process__num">3</span>
 					<div>
-						<h3 class="process__title">Дефектовка и согласование</h3>
-						<p class="process__text">Составляем перечень работ, называем точную стоимость и сроки. Цена не меняется после согласования.</p>
+						<h3 class="process__title">Согласование</h3>
+						<p class="process__text">Сразу даём полную картину: что сделаем, сколько стоит, когда будет готово.</p>
 					</div>
 				</li>
 							<li class="process__step">
 					<span class="process__num">4</span>
 					<div>
 						<h3 class="process__title">Ремонт</h3>
-						<p class="process__text">Замена ремкомплекта, шлифовка вала, регулировка. Используем только оригинальные комплектующие.</p>
+						<p class="process__text">Полное восстановление рулевой рейки: точная дефектовка, профессиональная обработка поверхностей, установка оригинальных компонентов.</p>
 					</div>
 				</li>
 							<li class="process__step">
 					<span class="process__num">5</span>
 					<div>
 						<h3 class="process__title">Финальная проверка и выдача</h3>
-						<p class="process__text">Повторная проверка на стенде, выдача агрегата с актом выполненных работ и гарантией 6 месяцев.</p>
+						<p class="process__text">Проверка рулевой рейки на стендах, установка на автомобиль или выдача рулевой рейки клиенту.</p>
 					</div>
 				</li>
 					</ol>
@@ -415,42 +429,51 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <section class="section section--dark video" id="video">
 	<div class="container">
 		<h2 class="section__title">Посмотрите, как проходит приём и ремонт</h2>
-		<p class="section__subtitle">Одна минута — и вы увидите наш техцентр изнутри: как принимаем автомобиль, проверяем рейку на стенде и что получает клиент на выходе.</p>
+		<p class="section__subtitle">Одна минута — и вы увидите наш техцентр изнутри: как принимаем автомобиль, ремонтируем агрегаты и что получает клиент на выходе.</p>
 		<div class="video__extra">
 							<div class="video-tile">
 					<div class="video-facade video-facade--tile"
 						data-video-src="https://vk.com/video_ext.php?oid=-131055495&#038;id=456239318&#038;hd=2"
-						role="button" tabindex="0" aria-label="Смотреть видео">
+						role="button" tabindex="0" aria-label="Смотреть видео"
+						style="background-image:url(wp-content/uploads/2026/07/poster-456239318.jpg)">
 						<span class="video-facade__btn" aria-hidden="true"></span>
 					</div>
+											<p class="video-tile__label">Замена мотора на рейке Range Rover Evoque</p>
 									</div>
 							<div class="video-tile">
 					<div class="video-facade video-facade--tile"
 						data-video-src="https://vk.com/video_ext.php?oid=-131055495&#038;id=456239315&#038;hd=2"
-						role="button" tabindex="0" aria-label="Смотреть видео">
+						role="button" tabindex="0" aria-label="Смотреть видео"
+						style="background-image:url(wp-content/uploads/2026/07/poster-456239315.jpg)">
 						<span class="video-facade__btn" aria-hidden="true"></span>
 					</div>
 									</div>
 							<div class="video-tile">
 					<div class="video-facade video-facade--tile"
 						data-video-src="https://vk.com/video_ext.php?oid=-131055495&#038;id=456239314&#038;hd=2"
-						role="button" tabindex="0" aria-label="Смотреть видео">
+						role="button" tabindex="0" aria-label="Смотреть видео"
+						style="background-image:url(wp-content/uploads/2026/07/poster-456239314.jpg)">
 						<span class="video-facade__btn" aria-hidden="true"></span>
 					</div>
+											<p class="video-tile__label">Свежее поступление рулевых реек</p>
 									</div>
 							<div class="video-tile">
 					<div class="video-facade video-facade--tile"
 						data-video-src="https://vk.com/video_ext.php?oid=-131055495&#038;id=456239313&#038;hd=2"
-						role="button" tabindex="0" aria-label="Смотреть видео">
+						role="button" tabindex="0" aria-label="Смотреть видео"
+						style="background-image:url(wp-content/uploads/2026/07/poster-456239313.jpg)">
 						<span class="video-facade__btn" aria-hidden="true"></span>
 					</div>
+											<p class="video-tile__label">Забираем автомобиль в ремонт</p>
 									</div>
 							<div class="video-tile">
 					<div class="video-facade video-facade--tile"
 						data-video-src="https://vk.com/video_ext.php?oid=-131055495&#038;id=456239312&#038;hd=2"
-						role="button" tabindex="0" aria-label="Смотреть видео">
+						role="button" tabindex="0" aria-label="Смотреть видео"
+						style="background-image:url(wp-content/uploads/2026/07/poster-456239312.jpg)">
 						<span class="video-facade__btn" aria-hidden="true"></span>
 					</div>
+											<p class="video-tile__label">Будни техцентра: день VAG</p>
 									</div>
 					</div>
 	</div>
@@ -625,6 +648,60 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 									</div>
 	</div>
 </section>
+<section class="section quiz" id="quiz">
+	<div class="container quiz__container">
+		<h2 class="section__title quiz__title">Узнайте стоимость ремонта рейки за 1 минуту — получите скидку 1 000 ₽ на ремонт</h2>
+		<form class="quiz__form card" data-lead-form data-form-type="quiz" data-goal="lead_quiz" novalidate>
+			<div class="quiz__fields">
+				<select class="lead-form__input" name="q_brand" data-q="Марка автомобиля">
+					<option value="">Марка автомобиля</option>
+											<option value="Lada">Lada</option>
+											<option value="Toyota">Toyota</option>
+											<option value="Kia">Kia</option>
+											<option value="Hyundai">Hyundai</option>
+											<option value="Volkswagen">Volkswagen</option>
+											<option value="Nissan">Nissan</option>
+											<option value="Ford">Ford</option>
+											<option value="Mazda">Mazda</option>
+											<option value="Renault">Renault</option>
+											<option value="Chevrolet">Chevrolet</option>
+											<option value="Mercedes">Mercedes</option>
+											<option value="BMW">BMW</option>
+											<option value="Geely">Geely</option>
+											<option value="Haval">Haval</option>
+											<option value="Chery">Chery</option>
+										<option value="Другая марка">Другая марка</option>
+				</select>
+				<select class="lead-form__input" name="q_symptom" data-q="Что беспокоит">
+					<option value="">Что беспокоит?</option>
+					<option>Стук или люфт руля</option>
+					<option>Тяжёлый руль</option>
+					<option>Течь жидкости</option>
+					<option>Гул насоса</option>
+					<option>Не знаю — нужна диагностика</option>
+				</select>
+				<select class="lead-form__input" name="q_type" data-q="Агрегат">
+					<option value="">Какой агрегат?</option>
+					<option>Рейка с ГУР</option>
+					<option>Рейка с ЭУР</option>
+					<option>Механическая рейка</option>
+					<option>Насос ГУР / ЭГУР</option>
+					<option>Рулевая колонка</option>
+					<option>Не знаю</option>
+				</select>
+				<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
+			</div>
+			<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+			<input type="hidden" name="ts" value="">
+			<label class="consent">
+				<input type="checkbox" name="consent" required>
+				<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
+			</label>
+			<button type="submit" class="btn btn--primary btn--block">Получить расчёт и скидку 1000 ₽</button>
+			<div class="lead-form__status" role="status" aria-live="polite" data-success-text="Скидка закреплена за вашим номером. Менеджер перезвонит, подтвердит скидку и запишет на бесплатную диагностику."></div>
+		</form>
+	</div>
+</section>
 <section class="section warranty" id="warranty">
 	<div class="container">
 		<h2 class="section__title">Гарантия</h2>
@@ -695,134 +772,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<h2 class="section__title">Акции и скидки</h2>
 		<div class="promos__grid">
 							<article class="card promo">
-										<h3 class="promo__title">Скидка за ваш неисправный агрегат</h3>
-					<div class="promo__text"><p>Сдайте старую рулевую рейку или насос при ремонте — сделаем скидку. Размер скидки зависит от состояния агрегата, уточняйте у мастера.</p>
+										<h3 class="promo__title">Выкупим ваш неисправный агрегат</h3>
+					<div class="promo__text"><p>Старая рейка или насос не подлежат ремонту или остались после замены? Выкупим их: зачтём стоимость в счёт ремонта или заплатим деньгами. Оценка — при диагностике.</p>
 </div>
 				</article>
 					</div>
-	</div>
-</section>
-<section class="section quiz" id="quiz">
-	<div class="container quiz__container">
-		<h2 class="section__title quiz__title">Узнайте стоимость ремонта рейки за 1 минуту — получите скидку 1 000 ₽ на ремонт</h2>
-		<form class="quiz__form card" data-lead-form data-form-type="quiz" data-goal="lead_quiz" novalidate>
-			<div class="quiz__progress" aria-hidden="true">
-				<div class="quiz__progress-bar"><span style="width:20%"></span></div>
-				<span class="quiz__progress-label">Шаг <b data-quiz-current>1</b> из 5 — скидка 1000 ₽ почти ваша</span>
-			</div>
-
-			<fieldset class="quiz__step" data-step="1" data-q="Марка автомобиля">
-				<legend class="quiz__question">Какая у вас марка автомобиля?</legend>
-				<div class="quiz__options quiz__options--grid">
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Lada">
-							<span>Lada</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Toyota">
-							<span>Toyota</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Kia">
-							<span>Kia</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Hyundai">
-							<span>Hyundai</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Volkswagen">
-							<span>Volkswagen</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Nissan">
-							<span>Nissan</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Ford">
-							<span>Ford</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Mazda">
-							<span>Mazda</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Renault">
-							<span>Renault</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Chevrolet">
-							<span>Chevrolet</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="Mercedes">
-							<span>Mercedes</span>
-						</label>
-											<label class="quiz__option">
-							<input type="radio" name="q_brand" value="BMW">
-							<span>BMW</span>
-						</label>
-										<label class="quiz__option">
-						<input type="radio" name="q_brand" value="other" data-other>
-						<span>Другая марка</span>
-					</label>
-				</div>
-				<input class="lead-form__input quiz__other" type="text" name="q_brand_other" placeholder="Укажите марку" hidden>
-			</fieldset>
-
-			<fieldset class="quiz__step" data-step="2" data-q="Что беспокоит" hidden>
-				<legend class="quiz__question">Что беспокоит в рулевом управлении?</legend>
-				<div class="quiz__options">
-					<label class="quiz__option"><input type="radio" name="q_symptom" value="Стук или люфт руля"><span>Стук или люфт руля</span></label>
-					<label class="quiz__option"><input type="radio" name="q_symptom" value="Тяжёлый руль"><span>Тяжёлый руль</span></label>
-					<label class="quiz__option"><input type="radio" name="q_symptom" value="Течь жидкости"><span>Течь жидкости</span></label>
-					<label class="quiz__option"><input type="radio" name="q_symptom" value="Гул насоса"><span>Гул насоса</span></label>
-					<label class="quiz__option"><input type="radio" name="q_symptom" value="Не знаю, нужна диагностика"><span>Не знаю — нужна диагностика</span></label>
-				</div>
-			</fieldset>
-
-			<fieldset class="quiz__step" data-step="3" data-q="Тип рейки" hidden>
-				<legend class="quiz__question">Какой у вас тип рулевой рейки?</legend>
-				<div class="quiz__options">
-					<label class="quiz__option"><input type="radio" name="q_type" value="Гидравлическая (ГУР)"><span>Гидравлическая (ГУР)</span></label>
-					<label class="quiz__option"><input type="radio" name="q_type" value="Электрическая (ЭУР)"><span>Электрическая (ЭУР)</span></label>
-					<label class="quiz__option"><input type="radio" name="q_type" value="Механическая"><span>Механическая</span></label>
-					<label class="quiz__option"><input type="radio" name="q_type" value="Не знаю"><span>Не знаю</span></label>
-				</div>
-				<p class="quiz__hint">Не знаете — не страшно: определим бесплатно на диагностике.</p>
-			</fieldset>
-
-			<fieldset class="quiz__step" data-step="4" data-q="Когда планируете ремонт" hidden>
-				<legend class="quiz__question">Когда планируете ремонт?</legend>
-				<div class="quiz__options">
-					<label class="quiz__option"><input type="radio" name="q_when" value="Сегодня или завтра"><span>Сегодня или завтра</span></label>
-					<label class="quiz__option"><input type="radio" name="q_when" value="На этой неделе"><span>На этой неделе</span></label>
-					<label class="quiz__option"><input type="radio" name="q_when" value="Пока узнаю цену"><span>Пока просто узнаю цену</span></label>
-				</div>
-			</fieldset>
-
-			<fieldset class="quiz__step" data-step="5" hidden>
-				<legend class="quiz__question">Куда отправить результат и скидку 1000 ₽?</legend>
-				<div class="quiz__contacts">
-					<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
-					<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
-					<button type="submit" class="btn btn--primary">Получить скидку 1000 ₽</button>
-				</div>
-				<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-				<input type="hidden" name="ts" value="">
-				<label class="consent">
-					<input type="checkbox" name="consent" required>
-					<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
-				</label>
-			</fieldset>
-
-			<div class="quiz__nav">
-				<button type="button" class="btn btn--ghost quiz__prev" hidden>← Назад</button>
-				<button type="button" class="btn btn--outline quiz__next" disabled>Далее →</button>
-			</div>
-
-			<div class="lead-form__status" role="status" aria-live="polite" data-success-text="Скидка закреплена за вашим номером. Менеджер перезвонит, подтвердит скидку и запишет на бесплатную диагностику."></div>
-		</form>
 	</div>
 </section>
 <section class="section section--soft faq" id="faq">
@@ -835,7 +789,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</details>
 							<details class="faq__item" >
 					<summary class="faq__question">Я не знаю, какая у меня рейка. Что делать?</summary>
-					<p class="faq__answer">Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику: проверим агрегат на стенде и точно назовём причину неисправности.</p>
+					<p class="faq__answer">Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику — точно назовём причину неисправности.</p>
 				</details>
 							<details class="faq__item" >
 					<summary class="faq__question">Какие признаки неисправности рулевого управления?</summary>
@@ -859,7 +813,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</details>
 					</div>
 	</div>
-	<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Какая гарантия на ремонт?","acceptedAnswer":{"@type":"Answer","text":"На ремонт рулевых реек — 6 месяцев или до 20 000 км пробега. На ремонт насосов ГУР/ЭГУР — 3 месяца или до 5 000 км. На все работы выдаём гарантийный талон."}},{"@type":"Question","name":"Я не знаю, какая у меня рейка. Что делать?","acceptedAnswer":{"@type":"Answer","text":"Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику: проверим агрегат на стенде и точно назовём причину неисправности."}},{"@type":"Question","name":"Какие признаки неисправности рулевого управления?","acceptedAnswer":{"@type":"Answer","text":"Стук на руле или в подвеске, подтекание масла, шум насоса ГУР, тугой руль, люфт в рулевом колесе, ошибки на приборной панели. Заметили хотя бы один — приезжайте на бесплатную диагностику, пока ремонт не стал дороже."}},{"@type":"Question","name":"Сколько времени занимает ремонт?","acceptedAnswer":{"@type":"Answer","text":"В большинстве случаев — от 1 рабочего дня. Точный срок назовём после диагностики и согласования работ — до начала ремонта."}},{"@type":"Question","name":"Я из другого города. Как отправить рейку в ремонт?","acceptedAnswer":{"@type":"Answer","text":"Отправьте агрегат любой транспортной компанией — отремонтируем и вернём тем же способом. До терминала транспортной компании в Самаре довезём бесплатно."}},{"@type":"Question","name":"Нужного агрегата нет в наличии — что делать?","acceptedAnswer":{"@type":"Answer","text":"Свяжитесь с менеджером: возможно скорое поступление. Либо отремонтируем или восстановим ваш агрегат в заводских условиях — это быстрее и дешевле покупки нового."}},{"@type":"Question","name":"Как можно оплатить?","acceptedAnswer":{"@type":"Answer","text":"Наличными или картой на месте, для организаций — безналичный расчёт с документами."}}]}</script>
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Какая гарантия на ремонт?","acceptedAnswer":{"@type":"Answer","text":"На ремонт рулевых реек — 6 месяцев или до 20 000 км пробега. На ремонт насосов ГУР/ЭГУР — 3 месяца или до 5 000 км. На все работы выдаём гарантийный талон."}},{"@type":"Question","name":"Я не знаю, какая у меня рейка. Что делать?","acceptedAnswer":{"@type":"Answer","text":"Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику — точно назовём причину неисправности."}},{"@type":"Question","name":"Какие признаки неисправности рулевого управления?","acceptedAnswer":{"@type":"Answer","text":"Стук на руле или в подвеске, подтекание масла, шум насоса ГУР, тугой руль, люфт в рулевом колесе, ошибки на приборной панели. Заметили хотя бы один — приезжайте на бесплатную диагностику, пока ремонт не стал дороже."}},{"@type":"Question","name":"Сколько времени занимает ремонт?","acceptedAnswer":{"@type":"Answer","text":"В большинстве случаев — от 1 рабочего дня. Точный срок назовём после диагностики и согласования работ — до начала ремонта."}},{"@type":"Question","name":"Я из другого города. Как отправить рейку в ремонт?","acceptedAnswer":{"@type":"Answer","text":"Отправьте агрегат любой транспортной компанией — отремонтируем и вернём тем же способом. До терминала транспортной компании в Самаре довезём бесплатно."}},{"@type":"Question","name":"Нужного агрегата нет в наличии — что делать?","acceptedAnswer":{"@type":"Answer","text":"Свяжитесь с менеджером: возможно скорое поступление. Либо отремонтируем или восстановим ваш агрегат в заводских условиях — это быстрее и дешевле покупки нового."}},{"@type":"Question","name":"Как можно оплатить?","acceptedAnswer":{"@type":"Answer","text":"Наличными или картой на месте, для организаций — безналичный расчёт с документами."}}]}</script>
 </section>
 <section class="section contacts" id="contacts">
 	<div class="container">
@@ -873,13 +827,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</div>
 					<div class="contacts__item">
 						<dt>График работы</dt>
-						<dd>Ежедневно с 9:00 до 19:00, без выходных</dd>
+						<dd>Пн–Пт с 9:00 до 19:00</dd>
 					</div>
 					<div class="contacts__item">
 						<dt>Телефоны</dt>
 						<dd>
 							<a href="tel:+79093443355">+7 (909) 344-33-55</a><br>
-							<a href="tel:+78462443355">8 (846) 244-33-55</a>
+							<a href="tel:+78462443355">+7 (846) 244-33-55</a>
 						</dd>
 					</div>
 											<div class="contacts__item">
@@ -888,7 +842,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</dl>
 				<div class="contacts__messengers">
-																<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
+																					<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
 										<button type="button" class="btn btn--primary" data-modal="callback">Заказать обратный звонок</button>
 				</div>
 				<p class="contacts__note">Удобная парковка у входа. Можно привезти рейку отдельно — без автомобиля.</p>
@@ -926,8 +880,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
 			<label class="lead-form__field-label" for="diag-date">Удобная дата диагностики (по желанию)</label>
 			<input class="lead-form__input" type="date" name="date" id="diag-date"
-				min="2026-07-28"
-				max="2026-08-27">
+				min="2026-07-29"
+				max="2026-08-28">
 			<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 			<input type="hidden" name="ts" value="">
 			<label class="consent">
@@ -943,7 +897,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	<div class="modal__body">
 		<button type="button" class="modal__close" aria-label="Закрыть">&times;</button>
 		<h3 class="modal__title">Перезвоним за 10 минут</h3>
-		<p class="modal__text">Оставьте номер — менеджер перезвонит в рабочее время (Ежедневно с 9:00 до 19:00, без выходных).</p>
+		<p class="modal__text">Оставьте номер — менеджер перезвонит в рабочее время (Пн–Пт с 9:00 до 19:00).</p>
 		<form class="lead-form" data-lead-form data-form-type="callback" data-goal="lead_callback" novalidate>
 			<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
 			<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">

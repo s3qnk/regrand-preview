@@ -21,6 +21,11 @@ function collectQuizAnswers(form) {
 		}
 		answers[fieldset.dataset.q] = value;
 	});
+	form.querySelectorAll('select[data-q]').forEach((select) => {
+		if (select.value) {
+			answers[select.dataset.q] = select.value;
+		}
+	});
 	return answers;
 }
 

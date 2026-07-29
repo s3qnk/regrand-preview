@@ -1,21 +1,21 @@
 import { initForms } from './modules/forms.js';
-import { initQuiz } from './modules/quiz.js';
 import { initModal } from './modules/modal.js';
 import { initPhoneMask } from './modules/phone-mask.js';
 import { initMetrikaEvents } from './modules/metrika.js';
 import { initLazyMap } from './modules/lazy-map.js';
 import { initLazyVideo } from './modules/lazy-video.js';
 import { initLightbox } from './modules/lightbox.js';
+import { initHeroRotate } from './modules/hero-rotate.js';
 import { initFaq } from './modules/faq.js';
 import { initReveal } from './modules/reveal.js';
 
 initPhoneMask();
 initModal();
-initQuiz();
 initForms();
 initMetrikaEvents();
 initLazyMap();
 initLazyVideo();
 initLightbox();
+initHeroRotate();
 initFaq();
 initReveal();
