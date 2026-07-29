@@ -251,12 +251,25 @@ select.lead-form__input {
 }
 .video-facade:hover .video-facade__btn { transform: scale(1.08); }
 .video-facade.is-loaded .video-facade__btn { display: none; }
-.video-facade--tile { border-radius: 14px; }
+.video-facade--tile { border-radius: 14px; aspect-ratio: 9/16; }
 .video-facade--tile .video-facade__btn { width: 48px; height: 48px; }
-.video__extra { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 28px; }
-@media (min-width: 1024px) {
-	.video__extra { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.video-facade video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.video__extra {
+	display: flex;
+	gap: 16px;
+	overflow-x: auto;
+	overflow-y: hidden; /* иначе overflow-x:auto наводит вертикальный скролл */
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 12px;
+	margin-top: 28px;
+	scrollbar-width: thin;
+	scrollbar-color: var(--c-red) rgba(255, 255, 255, .12);
 }
+.video__extra::-webkit-scrollbar { height: 8px; }
+.video__extra::-webkit-scrollbar-track { background: rgba(255, 255, 255, .12); border-radius: 100px; }
+.video__extra::-webkit-scrollbar-thumb { background: var(--c-red); border-radius: 100px; }
+.video-tile { flex: 0 0 230px; scroll-snap-align: start; }
 .video-tile__label { font-size: 14px; color: var(--c-gray); margin-top: 8px; }
 
 .lead-form__field-label { display: block; font-size: 13px; color: var(--c-gray); margin-bottom: -6px; }
@@ -390,34 +403,31 @@ select.lead-form__input {
 .faq__answer { padding: 0 0 16px; color: var(--c-gray); }
 
 /* ============ Контакты ============ */
-.contacts--map {
-	position: relative;
-	overflow: hidden;
-	padding: 64px 0;
-	min-height: 680px;
-	display: flex;
-	align-items: center;
-	background: var(--c-ink);
-}
-.contacts__mapbg { position: absolute; inset: 0; }
+/* Мобильные: карта сверху, контакты обычным потоком ниже — ничего не перекрыто. */
+.contacts--map { position: relative; overflow: hidden; background: var(--c-ink); }
+.contacts__mapbg { position: relative; height: 340px; }
 .contacts__mapbg iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.contacts__overlay { position: relative; z-index: 1; width: 100%; pointer-events: none; }
-.contacts__overlay .card,
-.contacts__overlay a,
-.contacts__overlay button,
-.contacts__overlay input,
-.contacts__overlay label { pointer-events: auto; }
+.contacts__overlay { position: relative; z-index: 1; padding-top: 40px; padding-bottom: 56px; }
 .contacts__title { color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
 .contacts__cards { display: grid; gap: 20px; }
+.contacts__card { padding: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
+
+/* Десктоп: карта — фон всей секции, карточки колонкой справа поверх. */
 @media (min-width: 1024px) {
+	.contacts--map { display: flex; align-items: center; min-height: 680px; padding: 64px 0; }
+	.contacts__mapbg { position: absolute; inset: 0; height: auto; }
+	.contacts__overlay { width: 100%; padding-top: 0; padding-bottom: 0; pointer-events: none; }
+	.contacts__overlay .card,
+	.contacts__overlay a,
+	.contacts__overlay button,
+	.contacts__overlay input,
+	.contacts__overlay label { pointer-events: auto; }
 	.contacts__cards { grid-template-columns: minmax(320px, 390px); justify-content: end; }
-}
-.contacts__card {
-	padding: 24px;
-	box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
-	background: rgba(255, 255, 255, .82);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	.contacts__card {
+		background: rgba(255, 255, 255, .82);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
 }
 .contacts__card-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
 .contacts__card-text { font-size: 14px; color: var(--c-gray); margin-bottom: 14px; }
