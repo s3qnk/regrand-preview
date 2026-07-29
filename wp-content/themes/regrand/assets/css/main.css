@@ -403,21 +403,33 @@ select.lead-form__input {
 .faq__answer { padding: 0 0 16px; color: var(--c-gray); }
 
 /* ============ Контакты ============ */
-/* Карта во всю ширину сверху (с карточкой организации от Яндекса),
-   ниже — «Контакты и проезд» с карточками. */
+/* Мобильные: карта сверху, контакты обычным потоком ниже. */
 .contacts--map { position: relative; overflow: hidden; background: var(--c-ink); }
 .contacts__mapbg { position: relative; height: 340px; }
-@media (min-width: 768px) {
-	.contacts__mapbg { height: 420px; }
-}
 .contacts__mapbg iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .contacts__overlay { position: relative; z-index: 1; padding-top: 40px; padding-bottom: 56px; }
-.contacts__title { color: #fff; }
-.contacts__cards { display: grid; gap: 20px; align-items: start; }
-@media (min-width: 1024px) {
-	.contacts__cards { grid-template-columns: 1fr 1fr; gap: 24px; }
-}
+.contacts__title { color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
+.contacts__cards { display: grid; gap: 20px; align-items: stretch; }
 .contacts__card { padding: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
+
+/* Десктоп: карта — фон всей секции, контактная информация и форма — внизу поверх карты. */
+@media (min-width: 1024px) {
+	.contacts--map { display: flex; flex-direction: column; justify-content: flex-end; min-height: 760px; padding: 56px 0 48px; }
+	.contacts__mapbg { position: absolute; inset: 0; height: auto; }
+	.contacts__overlay { padding-top: 0; padding-bottom: 0; pointer-events: none; }
+	.contacts__overlay .card,
+	.contacts__overlay a,
+	.contacts__overlay button,
+	.contacts__overlay input,
+	.contacts__overlay label { pointer-events: auto; }
+	.contacts__title { margin-bottom: 16px; }
+	.contacts__cards { grid-template-columns: 1fr 1fr; gap: 24px; }
+	.contacts__card {
+		background: rgba(255, 255, 255, .88);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
+}
 .contacts__card-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
 .contacts__card-text { font-size: 14px; color: var(--c-gray); margin-bottom: 14px; }
 .contacts__card .btn--block { margin: 14px 0 12px; }
