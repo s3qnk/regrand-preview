@@ -4,10 +4,16 @@ function load(facade) {
 	const iframe = document.createElement('iframe');
 	// С ID организации карта показывает её карточку (название, рейтинг, отзывы),
 	// без него — просто точку по адресу.
+	// Приоритет: точка-метка (без балуна) → карточка организации → поиск по адресу.
+	const pt = facade.dataset.mapPt;
 	const oid = facade.dataset.mapOid;
-	iframe.src = oid
-		? `https://yandex.ru/map-widget/v1/?ol=biz&oid=${encodeURIComponent(oid)}&z=16`
-		: `https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(facade.dataset.mapQuery || '')}&z=16`;
+	if (pt) {
+		iframe.src = `https://yandex.ru/map-widget/v1/?ll=${encodeURIComponent(pt)}&z=17&pt=${encodeURIComponent(pt)}`;
+	} else if (oid) {
+		iframe.src = `https://yandex.ru/map-widget/v1/?ol=biz&oid=${encodeURIComponent(oid)}&z=16`;
+	} else {
+		iframe.src = `https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(facade.dataset.mapQuery || '')}&z=16`;
+	}
 	if (facade.dataset.mapTheme) {
 		iframe.src += `&theme=${encodeURIComponent(facade.dataset.mapTheme)}`;
 	}
