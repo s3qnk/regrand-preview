@@ -86,7 +86,14 @@ input, textarea { font: inherit; }
 .btn:focus-visible { outline: 3px solid rgba(210, 31, 43, .45); outline-offset: 2px; }
 
 /* Шапка */
-.site-header { border-bottom: 1px solid var(--c-line); background: var(--c-bg); }
+.site-header {
+	border-bottom: 1px solid var(--c-line);
+	background: var(--c-bg);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 2px 12px rgba(28, 28, 33, .06);
+}
 .site-header__inner {
 	display: flex;
 	align-items: center;
