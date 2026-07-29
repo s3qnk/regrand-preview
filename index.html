@@ -792,11 +792,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	</div>
 	<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Какая гарантия на ремонт?","acceptedAnswer":{"@type":"Answer","text":"На ремонт рулевых реек — 6 месяцев или до 20 000 км пробега. На ремонт насосов ГУР/ЭГУР — 3 месяца или до 5 000 км. На все работы выдаём гарантийный талон."}},{"@type":"Question","name":"Я не знаю, какая у меня рейка. Что делать?","acceptedAnswer":{"@type":"Answer","text":"Позвоните по номеру +7 (909) 344-33-55 — определим тип рейки по марке, модели и году выпуска за минуту. Или приезжайте на бесплатную диагностику — точно назовём причину неисправности."}},{"@type":"Question","name":"Какие признаки неисправности рулевого управления?","acceptedAnswer":{"@type":"Answer","text":"Стук на руле или в подвеске, подтекание масла, шум насоса ГУР, тугой руль, люфт в рулевом колесе, ошибки на приборной панели. Заметили хотя бы один — приезжайте на бесплатную диагностику, пока ремонт не стал дороже."}},{"@type":"Question","name":"Сколько времени занимает ремонт?","acceptedAnswer":{"@type":"Answer","text":"В большинстве случаев — от 1 рабочего дня. Точный срок назовём после диагностики и согласования работ — до начала ремонта."}},{"@type":"Question","name":"Я из другого города. Как отправить рейку в ремонт?","acceptedAnswer":{"@type":"Answer","text":"Отправьте агрегат любой транспортной компанией — отремонтируем и вернём тем же способом. До терминала транспортной компании в Самаре довезём бесплатно."}},{"@type":"Question","name":"Нужного агрегата нет в наличии — что делать?","acceptedAnswer":{"@type":"Answer","text":"Свяжитесь с менеджером: возможно скорое поступление. Либо отремонтируем или восстановим ваш агрегат в заводских условиях — это быстрее и дешевле покупки нового."}},{"@type":"Question","name":"Как можно оплатить?","acceptedAnswer":{"@type":"Answer","text":"Наличными или картой на месте, для организаций — безналичный расчёт с документами."}}]}</script>
 </section>
-<section class="section contacts" id="contacts">
-	<div class="container">
-		<h2 class="section__title">Контакты и проезд</h2>
-		<div class="contacts__grid">
-			<div class="contacts__info">
+<section class="contacts contacts--map" id="contacts">
+		<div class="contacts__mapbg" data-map data-map-query="Самара, Луцкая 18" data-map-theme="dark"></div>
+	<div class="container contacts__overlay">
+		<h2 class="section__title contacts__title">Контакты и проезд</h2>
+		<div class="contacts__cards">
+			<div class="card contacts__card">
+				<h3 class="contacts__card-title">Контактная информация</h3>
 				<dl class="contacts__list">
 					<div class="contacts__item">
 						<dt>Адрес</dt>
@@ -818,16 +820,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							<dd><a href="mailto:Info@regrands.ru">Info@regrands.ru</a></dd>
 						</div>
 									</dl>
+				<a class="btn btn--primary btn--block" href="https://yandex.ru/maps/org/remont_rulevykh_reyek/232952442705/" target="_blank" rel="noopener">Построить маршрут</a>
 				<div class="contacts__messengers">
 											<a class="btn btn--outline" href="https://max.ru/u/f9LHodD0cOKI0WPbhuxXiKWs1xZpZC6nUwHiPnHPZtQZX6oqGKMk47YAbSw" target="_blank" rel="noopener" data-messenger>MAX</a>
 																					<a class="btn btn--outline" href="https://vk.com/regrands" target="_blank" rel="noopener" data-messenger>ВКонтакте</a>
-										<button type="button" class="btn btn--primary" data-modal="callback">Заказать обратный звонок</button>
-				</div>
+									</div>
 				<p class="contacts__note">Удобная парковка у входа. Можно привезти рейку отдельно — без автомобиля.</p>
 			</div>
-			<div class="contacts__map map-facade" data-map data-map-query="Самара, Луцкая 18" data-map-oid="232952442705">
-				<button type="button" class="btn btn--primary map-facade__btn">Показать карту</button>
-				<a class="map-facade__route" href="https://yandex.ru/maps/org/remont_rulevykh_reyek/232952442705/" target="_blank" rel="noopener">Построить маршрут в Яндекс.Картах →</a>
+			<div class="card contacts__card">
+				<h3 class="contacts__card-title">Заказать звонок</h3>
+				<p class="contacts__card-text">Перезвоним в рабочее время и ответим на вопросы.</p>
+				<form class="lead-form" data-lead-form data-form-type="callback" data-goal="lead_callback" novalidate>
+					<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
+					<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
+					<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+					<input type="hidden" name="ts" value="">
+					<label class="consent">
+						<input type="checkbox" name="consent" required>
+						<span>Согласен на <a href="policy/index.html" target="_blank" rel="noopener">обработку персональных данных</a></span>
+					</label>
+					<button type="submit" class="btn btn--primary btn--block">Перезвоните мне</button>
+					<div class="lead-form__status" role="status" aria-live="polite"></div>
+				</form>
 			</div>
 		</div>
 	</div>

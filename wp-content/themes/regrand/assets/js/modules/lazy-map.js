@@ -8,6 +8,9 @@ function load(facade) {
 	iframe.src = oid
 		? `https://yandex.ru/map-widget/v1/?ol=biz&oid=${encodeURIComponent(oid)}&z=16`
 		: `https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(facade.dataset.mapQuery || '')}&z=16`;
+	if (facade.dataset.mapTheme) {
+		iframe.src += `&theme=${encodeURIComponent(facade.dataset.mapTheme)}`;
+	}
 	iframe.loading = 'lazy';
 	iframe.title = 'Карта проезда';
 	facade.prepend(iframe);
