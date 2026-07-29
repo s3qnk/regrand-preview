@@ -115,6 +115,7 @@ input, textarea { font: inherit; }
 }
 .site-header__phone-btn:active { background: var(--c-red-dark); }
 .site-header__cta { display: none; }
+.site-header__max { display: none; }
 @media (min-width: 768px) {
 	.site-header__inner { padding-top: 12px; padding-bottom: 12px; gap: 16px; }
 	.site-header__logo-img { height: 38px; }
@@ -122,6 +123,7 @@ input, textarea { font: inherit; }
 	.site-header__contacts { display: block; margin-left: auto; }
 	.site-header__phone-btn { display: none; }
 	.site-header__cta { display: inline-flex; }
+	.site-header__max { display: inline-flex; }
 }
 
 /* Hero */
@@ -258,7 +260,7 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 		<a class="site-header__phone-btn" href="tel:+79093443355" aria-label="Позвонить: +7 (909) 344-33-55">
 			<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
 		</a>
-		<button type="button" class="btn btn--outline site-header__cta" data-modal="callback">Обратный звонок</button>
+				<button type="button" class="btn btn--outline site-header__cta" data-modal="callback">Обратный звонок</button>
 	</div>
 </header>
 <main>
