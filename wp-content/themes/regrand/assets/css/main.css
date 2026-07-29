@@ -1,5 +1,6 @@
 /* ============ Секции ============ */
 .section { padding: 56px 0; }
+section[id] { scroll-margin-top: 88px; } /* липкая шапка не накрывает якорные переходы */
 .section--soft { background: var(--c-bg-soft); }
 .section--dark { background: linear-gradient(160deg, #1c1c21 0%, #26262e 100%); position: relative; overflow: hidden; }
 .section--dark::before {
@@ -410,6 +411,34 @@ select.lead-form__input {
 	.contacts__mapbg { height: 480px; }
 }
 .contacts__mapbg iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.contacts__mapcard {
+	position: absolute;
+	top: 20px;
+	left: 16px;
+	z-index: 2;
+	background: rgba(30, 30, 36, .94);
+	color: #fff;
+	border-radius: 12px;
+	padding: 14px 18px;
+	max-width: 320px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, .4);
+}
+@media (min-width: 1024px) {
+	.contacts__mapcard { left: calc((100% - 1216px) / 2); }
+}
+.contacts__mapcard-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+.contacts__mapcard-rating { font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.contacts__mapcard-rating span:last-child { color: #b9bac4; }
+.contacts__mapcard-stars { color: #f7a600; letter-spacing: 1px; }
+.contacts__mapcard-line { font-size: 13px; color: #b9bac4; margin-bottom: 2px; }
+.contacts__mapcard-link {
+	display: inline-block;
+	margin-top: 8px;
+	font-size: 13px;
+	color: #8ab4ff;
+	text-decoration: none;
+}
+.contacts__mapcard-link:hover { text-decoration: underline; }
 
 /* Расширенный подвал с контактами и формой. */
 .site-footer__grid { display: grid; gap: 32px; }
