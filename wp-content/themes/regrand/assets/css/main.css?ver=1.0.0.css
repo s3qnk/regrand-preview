@@ -76,53 +76,58 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 .benefit__icon svg { width: 28px; height: 28px; }
 
 /* ============ Процесс ============ */
-.process__list { list-style: none; display: grid; gap: 20px; counter-reset: step; }
+/* Вертикальный таймлайн: линия слева, номер-кружок, текст, фото справа. */
+.process__list { list-style: none; display: grid; }
 .process__step {
-	display: flex;
-	gap: 18px;
-	align-items: flex-start;
-	background: var(--c-bg-soft);
-	border-radius: var(--radius);
-	padding: 20px;
+	position: relative;
+	display: grid;
+	grid-template-columns: 44px 1fr;
+	gap: 8px 20px;
+	padding-bottom: 36px;
+	align-items: start;
 }
+.process__step::before {
+	content: '';
+	position: absolute;
+	left: 21px;
+	top: 50px;
+	bottom: -6px;
+	width: 2px;
+	background: var(--c-line);
+}
+.process__step:last-child { padding-bottom: 0; }
+.process__step:last-child::before { display: none; }
 .process__num {
-	width: 40px;
-	height: 40px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	background: var(--c-red);
 	color: #fff;
 	font-weight: 800;
+	font-size: 18px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
+	box-shadow: 0 0 0 6px var(--c-red-light);
 }
-/* Карточка с фото: снимок впритык к краям, номер — бейджем на фото. */
-.process__step--photo {
-	position: relative;
-	flex-direction: column;
-	gap: 14px;
-	padding: 0 20px 20px;
-	overflow: hidden;
-}
+.process__body { align-self: center; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
 .process__photo {
-	width: calc(100% + 40px);
-	margin: 0 -20px;
-	aspect-ratio: 4/3;
+	grid-column: 2;
+	width: 100%;
+	max-width: 420px;
+	aspect-ratio: 16/10;
 	object-fit: cover;
-	order: -1;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	margin-top: 6px;
 }
-.process__step--photo .process__num {
-	position: absolute;
-	top: 14px;
-	left: 14px;
-	box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
-}
-.process__title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-.process__text { color: var(--c-gray); font-size: 15px; }
+.process__title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.process__text { color: var(--c-gray); font-size: 15px; max-width: 640px; }
 @media (min-width: 1024px) {
-	.process__list { grid-template-columns: repeat(5, 1fr); }
-	.process__step { flex-direction: column; }
+	.process__step { grid-template-columns: 44px minmax(0, 560px) 300px; justify-content: start; column-gap: 28px; }
+	.process__photo { grid-column: 3; grid-row: 1; margin-top: 0; aspect-ratio: 16/10; max-width: none; align-self: start; }
+	.process__body { grid-column: 2; }
 }
 
 /* ============ Кейсы ============ */
