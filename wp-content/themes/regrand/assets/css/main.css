@@ -97,13 +97,26 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 	justify-content: center;
 	flex-shrink: 0;
 }
-.process__step--photo { flex-wrap: wrap; }
+/* Карточка с фото: снимок впритык к краям, номер — бейджем на фото. */
+.process__step--photo {
+	position: relative;
+	flex-direction: column;
+	gap: 14px;
+	padding: 0 20px 20px;
+	overflow: hidden;
+}
 .process__photo {
-	width: 100%;
-	aspect-ratio: 1/1;
+	width: calc(100% + 40px);
+	margin: 0 -20px;
+	aspect-ratio: 4/3;
 	object-fit: cover;
-	border-radius: 12px;
 	order: -1;
+}
+.process__step--photo .process__num {
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
 }
 .process__title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
 .process__text { color: var(--c-gray); font-size: 15px; }
