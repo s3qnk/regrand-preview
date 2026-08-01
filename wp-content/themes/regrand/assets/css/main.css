@@ -97,6 +97,14 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 	justify-content: center;
 	flex-shrink: 0;
 }
+.process__step--photo { flex-wrap: wrap; }
+.process__photo {
+	width: 100%;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	border-radius: 12px;
+	order: -1;
+}
 .process__title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
 .process__text { color: var(--c-gray); font-size: 15px; }
 @media (min-width: 1024px) {
