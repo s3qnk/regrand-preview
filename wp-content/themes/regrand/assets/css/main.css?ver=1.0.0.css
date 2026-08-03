@@ -2,7 +2,7 @@
 .section { padding: 56px 0; }
 section[id] { scroll-margin-top: 88px; } /* липкая шапка не накрывает якорные переходы */
 .section--soft { background: var(--c-bg-soft); }
-.section--dark { background: linear-gradient(160deg, #1c1c21 0%, #26262e 100%); position: relative; overflow: hidden; }
+.section--dark { background: #1f1f25; position: relative; overflow: hidden; }
 .section--dark::before {
 	content: '';
 	position: absolute;
