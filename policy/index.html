@@ -26,6 +26,11 @@
 	--c-red: #d21f2b;
 	--c-red-dark: #a91622;
 	--c-red-light: #fdeaec;
+	/* Цвет кнопок: в красной схеме совпадает с акцентом, в синей — синий. */
+	--c-cta: var(--c-red);
+	--c-cta-dark: var(--c-red-dark);
+	--c-cta-shadow: rgba(210, 31, 43, .3);
+	--c-focus: rgba(210, 31, 43, .45);
 	--c-ink: #1c1c21;
 	--c-gray: #6b6b74;
 	--c-line: #e6e6ea;
@@ -35,6 +40,18 @@
 	--shadow: 0 8px 24px rgba(28, 28, 33, .08);
 	--container: 1440px;
 	--font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Сине-оранжевая схема (дубль посадки): акценты оранжевые, кнопки синие. */
+body.scheme-blue {
+	--c-red: #f56e00;
+	--c-red-dark: #d45f00;
+	--c-red-light: #fff1e3;
+	--c-cta: #006dc1;
+	--c-cta-dark: #005699;
+	--c-cta-shadow: rgba(0, 109, 193, .3);
+	--c-focus: rgba(0, 109, 193, .45);
+	--c-ink: #10243a;
 }
 
 html { scroll-behavior: smooth; }
@@ -71,8 +88,8 @@ input, textarea { font: inherit; }
 	text-align: center;
 	transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
-.btn--primary { background: var(--c-red); color: #fff; }
-.btn--primary:hover { background: var(--c-red-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(210, 31, 43, .3); }
+.btn--primary { background: var(--c-cta); color: #fff; }
+.btn--primary:hover { background: var(--c-cta-dark); transform: translateY(-2px); box-shadow: 0 8px 20px var(--c-cta-shadow); }
 .btn { will-change: transform; }
 .btn:active { transform: translateY(0); }
 .btn--outline { background: transparent; color: var(--c-red); border-color: var(--c-red); }
@@ -83,7 +100,7 @@ input, textarea { font: inherit; }
 .btn--lg { padding: 18px 36px; font-size: 18px; }
 .btn[disabled] { opacity: .5; cursor: not-allowed; }
 .btn:focus { outline: none; }
-.btn:focus-visible { outline: 3px solid rgba(210, 31, 43, .45); outline-offset: 2px; }
+.btn:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 2px; }
 
 /* Шапка */
 .site-header {
