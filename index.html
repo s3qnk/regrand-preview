@@ -411,12 +411,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						<span class="benefit__text">Собственное оборудование для ремонта и проверки</span>
 					</div>
 							</div>
-							<div class="video-facade benefits__video"
-					data-video-mp4="https://s3qnk.github.io/regrand-preview/wp-content/uploads/2026/08/benefits-video.mp4"
-					role="button" tabindex="0" aria-label="Смотреть видео о техцентре"
-					style="background-image:url(wp-content/uploads/2026/08/benefits-video.jpg)">
-					<span class="video-facade__btn" aria-hidden="true"></span>
-				</div>
+							<video class="benefits__video" autoplay muted loop playsinline preload="metadata"
+					onclick="this.muted=!this.muted"
+					title="Нажмите, чтобы включить или выключить звук"
+					poster="wp-content/uploads/2026/08/benefits-video.jpg">
+					<source src="wp-content/uploads/2026/08/benefits-video.mp4" type="video/mp4">
+				</video>
 					</div>
 	</div>
 </section>
