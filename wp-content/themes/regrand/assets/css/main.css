@@ -82,7 +82,8 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 /* ============ УТП ============ */
 .benefits__layout { display: grid; gap: 24px; }
 @media (min-width: 1024px) {
-	.benefits__layout--video { grid-template-columns: 1.15fr 0.85fr; align-items: center; }
+	.benefits__layout--video { grid-template-columns: 0.85fr 1.15fr; align-items: center; }
+	.benefits__layout--video .benefits__video { order: -1; }
 }
 .benefits__video { aspect-ratio: 16/9; }
 .benefits__grid {
