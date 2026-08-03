@@ -388,11 +388,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</div>
 	</div>
 </section>
-<section class="section section--dark process" id="process">
+<section class="section section--dark process" id="process" data-carousel>
 	<div class="container">
-		<h2 class="section__title">Этапы ремонта: от приёма до сдачи</h2>
-		<p class="section__subtitle">Прозрачный процесс: вы знаете, что происходит с вашей рейкой на каждом этапе.</p>
-		<ol class="process__list">
+		<div class="process__topbar">
+			<div>
+				<h2 class="section__title">Этапы ремонта: от приёма до сдачи</h2>
+				<p class="section__subtitle">Прозрачный процесс: вы знаете, что происходит с вашей рейкой на каждом этапе.</p>
+			</div>
+			<div class="carousel-nav">
+				<button type="button" class="carousel-btn" data-carousel-prev aria-label="Предыдущий этап">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+				<button type="button" class="carousel-btn" data-carousel-next aria-label="Следующий этап">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+			</div>
+		</div>
+		<ol class="process__list" data-carousel-track>
 							<li class="process__step">
 					<div class="process__head">
 						<span class="process__num">1</span>

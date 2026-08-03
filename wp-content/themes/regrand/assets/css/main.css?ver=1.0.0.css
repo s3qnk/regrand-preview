@@ -76,6 +76,23 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 .benefit__icon svg { width: 28px; height: 28px; }
 
 /* ============ Процесс ============ */
+.process__topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.carousel-nav { display: flex; gap: 10px; flex-shrink: 0; padding-top: 8px; }
+.carousel-btn {
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, .35);
+	background: transparent;
+	color: #fff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background .15s ease, border-color .15s ease;
+}
+.carousel-btn:hover { background: var(--c-red); border-color: var(--c-red); }
+
 /* Тёмная карусель этапов: номер + заголовок, текст, крупное фото снизу. */
 .process__list {
 	list-style: none;

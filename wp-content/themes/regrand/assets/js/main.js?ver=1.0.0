@@ -6,6 +6,7 @@ import { initLazyMap } from './modules/lazy-map.js';
 import { initLazyVideo } from './modules/lazy-video.js';
 import { initLightbox } from './modules/lightbox.js';
 import { initHeroRotate } from './modules/hero-rotate.js';
+import { initCarousels } from './modules/carousel.js';
 import { initFaq } from './modules/faq.js';
 import { initReveal } from './modules/reveal.js';
 
@@ -17,5 +18,6 @@ initLazyMap();
 initLazyVideo();
 initLightbox();
 initHeroRotate();
+initCarousels();
 initFaq();
 initReveal();
