@@ -79,10 +79,16 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 }
 
 /* ============ УТП ============ */
+.benefits__layout { display: grid; gap: 24px; }
+@media (min-width: 1024px) {
+	.benefits__layout--video { grid-template-columns: 1.15fr 0.85fr; align-items: center; }
+}
+.benefits__video { aspect-ratio: 16/9; }
 .benefits__grid {
 	display: grid;
 	gap: 16px;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	align-content: start;
 }
 @media (min-width: 1024px) {
 	.benefits__grid { grid-template-columns: repeat(3, 1fr); }
