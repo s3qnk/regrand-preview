@@ -76,7 +76,7 @@ async function submit(form) {
 	if (type === 'quiz') {
 		payload.answers = collectQuizAnswers(form);
 	}
-	const dateValue = form.querySelector('input[name="date"]')?.value;
+	const dateValue = form.querySelector('[name="date"]')?.value;
 	if (dateValue) {
 		payload.date = dateValue;
 	}

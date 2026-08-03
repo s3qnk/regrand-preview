@@ -343,9 +343,19 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 			<input class="lead-form__input" type="text" name="name" placeholder="Ваше имя" maxlength="100" autocomplete="name">
 			<input class="lead-form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone autocomplete="tel">
 			<label class="lead-form__field-label" for="diag-date">Удобная дата диагностики (по желанию)</label>
-			<input class="lead-form__input" type="date" name="date" id="diag-date"
-				min="2026-08-03"
-				max="2026-09-02">
+			<select class="lead-form__input" name="date" id="diag-date">
+				<option value="">Выберите день</option>
+									<option value="2026-08-03">Пн, 3 августа</option>
+									<option value="2026-08-04">Вт, 4 августа</option>
+									<option value="2026-08-05">Ср, 5 августа</option>
+									<option value="2026-08-06">Чт, 6 августа</option>
+									<option value="2026-08-07">Пт, 7 августа</option>
+									<option value="2026-08-10">Пн, 10 августа</option>
+									<option value="2026-08-11">Вт, 11 августа</option>
+									<option value="2026-08-12">Ср, 12 августа</option>
+									<option value="2026-08-13">Чт, 13 августа</option>
+									<option value="2026-08-14">Пт, 14 августа</option>
+							</select>
 			<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 			<input type="hidden" name="ts" value="">
 			<label class="consent">
