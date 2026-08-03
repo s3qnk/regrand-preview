@@ -88,14 +88,16 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 /* ============ УТП ============ */
 .benefits__layout { display: grid; gap: 24px; }
 @media (min-width: 1024px) {
-	.benefits__layout--video { grid-template-columns: 0.9fr 1.1fr; align-items: stretch; }
-	.benefits__layout--video .benefits__video { order: -1; height: 100%; aspect-ratio: auto; min-height: 300px; }
-	.benefits__layout--video .benefits__grid { align-content: stretch; }
+	.benefits__layout--video { grid-template-columns: 0.75fr 1.25fr; align-items: center; }
+	.benefits__layout--video .benefits__video { order: -1; max-height: 560px; }
 }
 .benefits__video {
+	display: block;
 	width: 100%;
-	aspect-ratio: 16/9;
-	object-fit: cover;
+	max-width: 340px;
+	height: auto;
+	margin: 0 auto;
+	object-fit: contain;
 	border-radius: var(--radius);
 	background: #000;
 	box-shadow: var(--shadow);

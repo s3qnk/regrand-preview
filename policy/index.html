@@ -194,14 +194,16 @@ input, textarea { font: inherit; }
 .hero__rating-stars { color: #f7a600; letter-spacing: 2px; }
 .hero__media { display: flex; justify-content: center; }
 .hero__media img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; object-fit: cover; }
+/* Размер по натуральным пропорциям ролика — подходит и вертикальным, и горизонтальным. */
 .hero__video {
 	width: 100%;
-	max-width: 420px;
-	aspect-ratio: 9/16;
+	max-width: 560px;
+	max-height: 620px;
+	height: auto;
 	border-radius: 20px;
 	background: var(--c-ink);
 	box-shadow: var(--shadow);
-	object-fit: cover;
+	object-fit: contain;
 }
 .hero__secondary { margin-top: 16px; }
 @media (min-width: 1024px) {
