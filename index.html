@@ -431,7 +431,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			</div>
 		</div>
 		<ol class="process__list" data-carousel-track>
-							<li class="process__step">
+										<li class="process__step">
 					<div class="process__head">
 						<span class="process__num">1</span>
 						<h3 class="process__title">Осмотр</h3>
@@ -466,14 +466,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							<li class="process__step">
 					<div class="process__head">
 						<span class="process__num">5</span>
-						<h3 class="process__title">Финальная проверка и выдача</h3>
-					</div>
-					<p class="process__text">Проверка рулевой рейки на стендах.</p>
-											<img class="process__photo" src="wp-content/uploads/2026/08/step-5-proverka.jpg" alt="Финальная проверка и выдача" loading="lazy" width="520" height="390">
-									</li>
-							<li class="process__step">
-					<div class="process__head">
-						<span class="process__num">6</span>
 						<h3 class="process__title">Установка на автомобиль</h3>
 					</div>
 					<p class="process__text">Установка на автомобиль и выдача клиенту.</p>
@@ -543,11 +535,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</div>
 	</div>
 </section>
-<section class="section section--soft cases" id="cases">
+<section class="section section--soft cases" id="cases" data-carousel>
 	<div class="container">
-		<h2 class="section__title">Примеры работ</h2>
-		<p class="section__subtitle">Реальные рейки наших клиентов: до, в процессе и после ремонта.</p>
-		<div class="cases__list">
+		<div class="process__topbar">
+			<div>
+				<h2 class="section__title">Примеры работ</h2>
+				<p class="section__subtitle">Реальные рейки наших клиентов: до, в процессе и после ремонта.</p>
+			</div>
+			<div class="carousel-nav carousel-nav--light">
+				<button type="button" class="carousel-btn" data-carousel-prev aria-label="Предыдущий пример">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+				<button type="button" class="carousel-btn" data-carousel-next aria-label="Следующий пример">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+			</div>
+		</div>
+		<div class="cases__list" data-carousel-track>
 												<article class="card case">
 						<h3 class="case__title">Nissan Almera — ремонт рулевой рейки (ГУР)</h3>
 						<div class="case__photos">

@@ -189,15 +189,28 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 }
 
 /* ============ Кейсы ============ */
-.cases__list { display: grid; gap: 20px; }
+.cases__list {
+	display: flex;
+	gap: 20px;
+	overflow-x: auto;
+	overflow-y: hidden; /* overflow-x:auto иначе наводит и вертикальный скролл */
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 12px;
+	scrollbar-width: thin;
+	scrollbar-color: var(--c-red) var(--c-line);
+}
+.cases__list::-webkit-scrollbar { height: 8px; }
+.cases__list::-webkit-scrollbar-track { background: var(--c-line); border-radius: 100px; }
+.cases__list::-webkit-scrollbar-thumb { background: var(--c-red); border-radius: 100px; }
+.cases__list .case { flex: 0 0 min(440px, 88vw); scroll-snap-align: start; }
+.carousel-nav--light .carousel-btn { border-color: var(--c-line); color: var(--c-ink); }
+.carousel-nav--light .carousel-btn:hover { color: #fff; }
 .case__title { font-size: 17px; font-weight: 700; margin-bottom: 14px; }
 .case__photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
 .case__photo img { border-radius: 8px; width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--c-bg-soft); }
 .case__photo figcaption { font-size: 12px; color: var(--c-gray); text-align: center; margin-top: 6px; }
 .case__comment { font-size: 14px; color: var(--c-gray); border-left: 3px solid var(--c-red); padding-left: 12px; }
-@media (min-width: 768px) {
-	.cases__list { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-}
 
 /* ============ Акции ============ */
 .promos__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
