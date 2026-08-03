@@ -54,6 +54,7 @@ section[id] { scroll-margin-top: 88px; } /* липкая шапка не нак�
 .services__cta-note { font-size: 14px; color: var(--c-gray); }
 .services__includes { margin: 32px 0 28px; }
 .services__includes-title { font-size: 19px; font-weight: 700; margin-bottom: 16px; }
+.services__includes-photo { display: block; width: 100%; max-width: 860px; height: auto; margin: 0 auto 24px; }
 .services__includes-list { list-style: none; display: grid; gap: 10px 28px; }
 @media (min-width: 768px) {
 	.services__includes-list { grid-template-columns: 1fr 1fr; }
